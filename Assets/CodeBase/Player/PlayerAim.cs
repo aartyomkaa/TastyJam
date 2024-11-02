@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAim : MonoBehaviour
+namespace CodeBase.Player
 {
-    private Vector2 _cursorCoords;
-
-    public Vector2 CurrentCoords => _cursorCoords;
-
-    private void Awake()
+    public class PlayerAim : MonoBehaviour
     {
-        _cursorCoords = Vector2.zero;
-    }
+        private Vector2 _cursorCoords;
 
-    public void UpdateAimCoords(Vector2 newCoords)
-    {
-        _cursorCoords = newCoords;
+        public Vector2 CurrentCoords => _cursorCoords;
+
+        private void Awake()
+        {
+            _cursorCoords = Vector2.zero;
+        }
+
+        public void UpdateAimCoords(Vector2 newCoords)
+        {
+            _cursorCoords = newCoords;
+        }
     }
 }

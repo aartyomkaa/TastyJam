@@ -2,6 +2,7 @@ using CodeBase.Infrastructure.AssetManagment;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.StaticData;
+using UnityEngine.SceneManagement;
 
 namespace CodeBase.Infrastructure.States
 {
@@ -22,7 +23,7 @@ namespace CodeBase.Infrastructure.States
 
         public void Enter()
         {
-            _stateMachine.Enter<LoadLevelState, string>(Level1);
+            _stateMachine.Enter<LoadLevelState, string>(SceneManager.GetActiveScene().name);
         }
 
         public void Exit()
