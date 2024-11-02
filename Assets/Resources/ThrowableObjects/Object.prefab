@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3478048240242019908}
   - component: {fileID: 1866420357131835993}
-  - component: {fileID: 2449899138300407195}
   - component: {fileID: 7075843327162101546}
+  - component: {fileID: 2449899138300407195}
+  - component: {fileID: 7365101420193474576}
   m_Layer: 0
   m_Name: Object
   m_TagString: ThrowableObject
@@ -86,19 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2449899138300407195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3888968798785763271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8c05f4ee93932c439162c2a92119cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _staticData: {fileID: 11400000, guid: 6366b0c395c2cc24d9bae9dbbdebd840, type: 2}
 --- !u!61 &7075843327162101546
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -144,3 +132,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2449899138300407195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3888968798785763271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8c05f4ee93932c439162c2a92119cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _staticData: {fileID: 11400000, guid: 6366b0c395c2cc24d9bae9dbbdebd840, type: 2}
+--- !u!114 &7365101420193474576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3888968798785763271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40810edb2662c244cb2472325ca9df9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _staticData: {fileID: 11400000, guid: aa04aaff30fd88d48a626291de4b4a6c, type: 2}
