@@ -23,7 +23,7 @@ namespace CodeBase.Infrastructure.States
 
         public void Enter()
         {
-            _stateMachine.Enter<LoadLevelState, string>(SceneManager.GetActiveScene().name);
+            _stateMachine.Enter<LoadLevelState, string>(Level1);
         }
 
         public void Exit()
