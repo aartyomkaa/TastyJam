@@ -1,47 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ThrowableObject : MonoBehaviour
+namespace CodeBase.ThrowableObjects
 {
-    [SerializeField] private ThrowableObjectStaticData _staticData;
-
-    private Vector3 _targetDirection;
-    private Vector3 _targetPoint;
-
-    // Current state
-    private bool _isMoving;
-
-
-    private void Awake()
+    public class ThrowableObject : MonoBehaviour
     {
-        _isMoving = false;
-    }
+        [SerializeField] private ThrowableObjectStaticData _staticData;
 
-    private void FixedUpdate()
-    {
-        if (_isMoving)
+        private Vector3 _targetDirection;
+        private Vector3 _targetPoint;
+
+
+        // Current state
+        private bool _isMoving;
+
+        public bool CanBePickedUp => !_isMoving;
+
+        private void Awake()
         {
-            if (transform.position != _targetPoint)
-            {
-                Vector3 newPos = Vector3.Lerp(transform.position, _targetPoint, _staticData.Speed * Time.deltaTime);
-                transform.position = newPos;
-            }
-            else
-            {
-                _isMoving = false;
-            }
+            _isMoving = false;
         }
 
-    }
+        private void FixedUpdate()
+        {
+            if (_isMoving)
+            {
+                if (Vector3.Distance(transform.position, _targetPoint) > _staticData.DistanceEpsilon)
+                {
+                    Vector3 newPos = Vector3.Lerp(transform.position, _targetPoint, _staticData.Speed * Time.deltaTime);
+                    transform.position = newPos;
+                }
+                else
+                {
+                    _isMoving = false;
+                }
+            }
 
-    public void Init(Vector2 targetPoint)
-    {
-        _targetDirection = (Vector3)targetPoint - transform.position;
-        _targetDirection.Normalize();
+        }
 
-        _targetPoint = transform.position + _targetDirection * _staticData.MaxDistance;
+        public void InitThrow(Vector2 targetPoint)
+        {
+            _targetDirection = (Vector3)targetPoint - transform.position;
+            _targetDirection.Normalize();
 
-        _isMoving = true;
+            _targetPoint = transform.position + _targetDirection * _staticData.MaxDistance;
+
+            _isMoving = true;
+        }
+
+        public void PickedUp()
+        {
+            _isMoving = false;
+        }
     }
 }

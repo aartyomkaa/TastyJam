@@ -1,15 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
+using CodeBase.ThrowableObjects;
 using UnityEngine;
 
-public class ThrowAction : MonoBehaviour
+namespace CodeBase.Player
 {
-    [SerializeField] private Transform _throwInitPosition;
-
-    public void Throw(Vector2 targetPoint, GameObject objectToThrow)
+    public class ThrowAction : MonoBehaviour
     {
-        GameObject instantiatedObject = Instantiate(objectToThrow, _throwInitPosition.position, Quaternion.identity);
+        [SerializeField] private Transform _throwInitPosition;
+        [SerializeField] private Transform _objectsTransform;
+        private PlayerState _playerState;
 
-        instantiatedObject.GetComponent<ThrowableObject>().Init(targetPoint);
+        public void Init(PlayerState playerState)
+        {
+            _playerState = playerState;
+        }
+
+        public void Throw(Vector2 targetPoint)
+        {
+            if (_playerState.ObjectInHands != null)
+            {
+                GameObject objectToThrow = _playerState.ObjectInHands;
+                objectToThrow.transform.SetParent(_objectsTransform, true);
+                objectToThrow.GetComponent<ThrowableObject>().InitThrow(targetPoint);
+
+                _playerState.ObjectInHands = null;
+            }
+
+        }
     }
 }
