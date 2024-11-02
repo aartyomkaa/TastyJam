@@ -14,4 +14,11 @@
     {
         void Enter(TPayload payload);
     }
+    
+    public interface IFsmState : IExitableState
+    {
+        void Enter();
+        
+        void Update();
+    }
 }

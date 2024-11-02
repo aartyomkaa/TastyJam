@@ -2,7 +2,8 @@
 
 namespace CodeBase.StaticData
 {
-    public class KnightStaticData
+    [CreateAssetMenu(fileName = "KnightData", menuName = "StaticData/Knight")]
+    public class KnightStaticData : ScriptableObject
     {
         [Range(1, 100)]
         public int Hp;
@@ -15,7 +16,13 @@ namespace CodeBase.StaticData
 
         [Range(0.5f, 1f)]
         public float EffectiveDistance;
+        
+        [Range(1f, 10f)]
+        public float AggroRange;
+        
+        [Range(1f, 2f)] 
+        public float AttackRange;
 
-        public GameObject Prefab;
+        public LayerMask Enemy;
     }
 }

@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class ThrowableObjectStaticData : ScriptableObject
+namespace CodeBase.StaticData
 {
-    public float Speed = 10;
-    public float MaxDistance = 5;
+    [CreateAssetMenu(fileName = "ObjectData", menuName = "StaticData/Object")]
+    public class ThrowableObjectStaticData : ScriptableObject
+    {
+        public float Speed = 10;
+        public float MaxDistance = 5;
+    }
 }

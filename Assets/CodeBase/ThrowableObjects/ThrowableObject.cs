@@ -1,3 +1,4 @@
+using CodeBase.StaticData;
 using UnityEngine;
 
 namespace CodeBase.ThrowableObjects
@@ -41,7 +42,6 @@ namespace CodeBase.ThrowableObjects
             _targetDirection.Normalize();
 
             _targetPoint = transform.position + _targetDirection * _staticData.MaxDistance;
-            Debug.Log(_targetPoint);
 
             _isMoving = true;
         }

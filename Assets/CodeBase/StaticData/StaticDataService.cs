@@ -16,6 +16,9 @@ namespace CodeBase.StaticData
                 .ToDictionary(x => x.MonsterTypeID, x => x);
         }
 
+        public KnightStaticData ForKnight() => 
+            Resources.Load<KnightStaticData>("StaticData/Knight/KnightData");
+
         public MonsterStaticData ForMonster(MonsterTypeID typeID) => 
             _monsters.TryGetValue(typeID, out MonsterStaticData data) ? data : null;
     }

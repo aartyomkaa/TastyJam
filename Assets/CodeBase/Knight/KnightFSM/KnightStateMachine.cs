@@ -1,35 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using CodeBase.Infrastructure.States;
 using CodeBase.Logic;
 using CodeBase.StaticData;
-using Unity.VisualScripting;
 using UnityEngine;
 
-namespace CodeBase.Knight
+namespace CodeBase.Knight.KnightFSM
 {
     public class KnightStateMachine
     {
-        private IFSMState _currentState;
-        private Dictionary<Type, IFSMState> _states = new Dictionary<Type, IFSMState>();
+        private IFsmState _currentState;
+        private Dictionary<Type, IFsmState> _states = new Dictionary<Type, IFsmState>();
 
-        public KnightStateMachine(Animator animator, IFSMControllable unit, KnightStaticData data)
+        public KnightStateMachine(Animator animator, KnightMover movement, KnightAttacker attacker, KnightStaticData data)
         {
-            AddState(new FSMStateIdle(this, unit, data));
-            AddState(new FSMStateChaseEnemy(this, animator, data));
-            AddState(new FSMStateAttack(this, unit, animator, data));
+            AddState(new FSMStateIdle(this, movement, data));
+            AddState(new FSMStateChaseEnemy(this, movement, animator, data));
+            AddState(new FSMStateAttack(this, attacker, animator, data));
+            
+            SetState<FSMStateIdle>();
         }
 
-        public Vector3 MovePosition { get; private set; }
+        public IHealth Target { get; private set; }
 
-        public IDamageable Target { get; private set; }
-
-        public void AddState(IFSMState state)
+        public void AddState(IFsmState state)
         {
             _states.Add(state.GetType(), state);
         }
 
-        public void SetState<T>()
-            where T : IFSMState
+        public void Update()
+        {
+            _currentState?.Update();
+        }
+
+        public void SetState<T>() where T : IFsmState
         {
             var type = typeof(T);
 
@@ -45,10 +49,10 @@ namespace CodeBase.Knight
                 }
             }
         }
-
-        public void Update()
+        
+        public void SetTarget(IHealth target)
         {
-            _currentState?.Update();
+            Target = target;
         }
     }
 }

@@ -6,5 +6,6 @@ namespace CodeBase.Infrastructure.Services
     {
         void LoadMonsters();
         MonsterStaticData ForMonster(MonsterTypeID typeID);
+        KnightStaticData ForKnight();
     }
 }

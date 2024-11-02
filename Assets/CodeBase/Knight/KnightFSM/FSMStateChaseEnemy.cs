@@ -1,30 +1,44 @@
-using System;
+using CodeBase.Infrastructure.States;
 using CodeBase.StaticData;
-using Unity.VisualScripting;
 using UnityEngine;
 
-namespace CodeBase.Knight
+namespace CodeBase.Knight.KnightFSM
 {
-    public class FSMStateChaseEnemy : IFSMState
+    public class FSMStateChaseEnemy : IFsmState
     {
-        public FSMStateChaseEnemy(KnightStateMachine knightStateMachine, Animator animator, KnightStaticData data)
+        private readonly KnightStateMachine _knightStateMachine;
+        private readonly KnightMover _movement;
+        private readonly Animator _animator;
+        private readonly KnightStaticData _data;
+
+        public FSMStateChaseEnemy(KnightStateMachine knightStateMachine, KnightMover movement, Animator animator, KnightStaticData data)
         {
-            throw new NotImplementedException();
+            _knightStateMachine = knightStateMachine;
+            _movement = movement;
+            _animator = animator;
+            _data = data;
         }
 
         public void Enter()
         {
-            throw new NotImplementedException();
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
+            _movement.Move(_knightStateMachine.Target.Transform);
+            
+            if (_knightStateMachine.Target == null)
+                return;
+            
+            if (Vector2.Distance(_movement.transform.position, _knightStateMachine.Target.Transform.position) < _data.AttackRange)
+            {
+                _knightStateMachine.SetState<FSMStateAttack>();
+            }
         }
 
         public void Exit()
         {
-            throw new NotImplementedException();
+
         }
     }
 }
