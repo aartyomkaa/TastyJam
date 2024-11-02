@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: ThrowableObjectStaticData
   m_EditorClassIdentifier: 
   Speed: 10
-  MaxDistance: 5
+  MaxDistance: 6
+  DistanceEpsilon: 0.1

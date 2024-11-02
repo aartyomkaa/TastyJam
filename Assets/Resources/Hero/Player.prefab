@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _throwInitPosition: {fileID: 4062799221111651717}
+  _objectsTransform: {fileID: 0}
 --- !u!114 &4852836492009533793
 MonoBehaviour:
   m_ObjectHideFlags: 0
