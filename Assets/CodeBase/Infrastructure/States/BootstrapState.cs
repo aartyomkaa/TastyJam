@@ -1,8 +1,7 @@
 using CodeBase.Infrastructure.AssetManagment;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Services;
-using CodeBase.Infrastructure.StaticData;
-using UnityEngine.SceneManagement;
+using CodeBase.StaticData;
 
 namespace CodeBase.Infrastructure.States
 {
