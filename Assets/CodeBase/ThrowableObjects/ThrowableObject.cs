@@ -41,7 +41,6 @@ public class ThrowableObject : MonoBehaviour
         _targetDirection.Normalize();
 
         _targetPoint = transform.position + _targetDirection * _staticData.MaxDistance;
-        Debug.Log(_targetPoint);
 
         _isMoving = true;
     }
