@@ -386,9 +386,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectPrefabs:
-  - {fileID: 3888968798785763271, guid: 289c056b921d5ba4ca41818eea0696b9, type: 3}
-  - {fileID: 3888968798785763271, guid: 742785ef26b423f47bf41292010031f5, type: 3}
-  - {fileID: 3888968798785763271, guid: 3969cb21ebf354b49ac5cd063bf6fbe4, type: 3}
+  - {fileID: 306916737257771696, guid: 11860d74ca90b5849b2988a26714ffcc, type: 3}
+  - {fileID: 306916737257771696, guid: 2c4f9a57f96714a44ac560320f1dcf16, type: 3}
+  - {fileID: 306916737257771696, guid: f91817fa08adde84485a3ddb70d082dd, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
