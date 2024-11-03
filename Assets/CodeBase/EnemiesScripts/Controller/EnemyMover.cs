@@ -22,7 +22,6 @@ public class EnemyMover : MonoBehaviour
             _vectorToKnight = _knightPos - (Vector2)transform.position;
             _spriteRenderer.flipX = _rb.velocity.x < 0;
 
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
             yield return new WaitForSeconds(Time.deltaTime);
         }
         StartAttacking.Invoke();
