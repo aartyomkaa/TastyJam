@@ -1,3 +1,4 @@
+using CodeBase.StaticData;
 using System.Collections;
 using UnityEngine;
 
