@@ -23,6 +23,10 @@ namespace CodeBase.ThrowableObjects
         {
             _disappear = GetComponent<DisappearableObject>();
 
+        }
+
+        private void OnEnable()
+        {
             _state = ThrowableObjectState.Idle;
         }
 

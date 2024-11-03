@@ -1,4 +1,5 @@
 using CodeBase.Infrastructure.StaticData;
+using CodeBase.ThrowableObjects.Pool;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,7 +49,8 @@ namespace CodeBase.ThrowableObjects
             }
 
             _spriteRenderer.color = _originColor;
-            gameObject.SetActive(false);
+
+            ThrowableObjectPool.ReturnObjectToPool(gameObject);
         }
     }
 }
