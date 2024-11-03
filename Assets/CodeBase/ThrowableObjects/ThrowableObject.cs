@@ -1,10 +1,11 @@
 using System.Collections;
 using CodeBase.StaticData;
+using CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon;
 using UnityEngine;
 
 namespace CodeBase.ThrowableObjects
 {
-    public class ThrowableObject : MonoBehaviour
+    public class ThrowableObject : MonoBehaviour, IEquippableObject
     {
         [SerializeField] private ThrowableObjectStaticData _staticData;
 
@@ -51,8 +52,7 @@ namespace CodeBase.ThrowableObjects
             {
                 if (Vector3.Distance(transform.position, _targetPoint) > _staticData.DistanceEpsilon)
                 {
-                    Vector3 newPos = Vector3.Lerp(transform.position, _targetPoint, _staticData.Speed * Time.deltaTime);
-                    transform.position = newPos;
+                    Move(_targetPoint);
                 }
                 else
                 {
@@ -80,6 +80,19 @@ namespace CodeBase.ThrowableObjects
             }
 
             _state = ThrowableObjectState.PickedUp;
+        }
+
+        public void Equip(Vector3 position)
+        {
+            _state = ThrowableObjectState.Disappearing;
+            _disappear.StartDisappear();
+            Move(position);
+        }
+
+        private void Move(Vector3 position)
+        {
+            Vector3 newPos = Vector3.Lerp(transform.position, position, _staticData.Speed * Time.deltaTime);
+            transform.position = newPos;
         }
     }
 }

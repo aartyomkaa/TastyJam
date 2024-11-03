@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using CodeBase.Logic;
+using CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon;
 using UnityEngine;
 
 namespace CodeBase.Knight
 {
     public class KnightAttacker : MonoBehaviour
     {
+        private Weapon _currentWeapon;
         private bool _isOnCooldown = false;
         private float _attackCooldown;
         private float _damage;
@@ -26,6 +28,7 @@ namespace CodeBase.Knight
             if (_isOnCooldown)
                 return;
             
+            _currentWeapon.
             _hitColliders = Physics2D.OverlapCircleAll(transform.position, _radius, _mask);
             
             if (_hitColliders.Length > 0)
@@ -39,6 +42,11 @@ namespace CodeBase.Knight
                 
                 StartCoroutine(AttackCoroutine());
             }
+        }
+
+        public void Equip(Weapon weapon)
+        {
+            _currentWeapon = weapon;
         }
 
         private IEnumerator AttackCoroutine()
