@@ -10,12 +10,12 @@ namespace CodeBase.Player
         [SerializeField] private Transform handsArea;
         private PlayerState _playerState;
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerStay2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("ThrowableObject"))
             {
                 ThrowableObject throwableObject = collision.GetComponent<ThrowableObject>();
-                if (throwableObject.CanBePickedUp)
+                if (_playerState.ObjectInHands == null && throwableObject.CanBePickedUp)
                 {
 
                     collision.transform.SetParent(handsArea, false);
