@@ -276,6 +276,14 @@ PrefabInstance:
       propertyPath: _objectsTransform
       value: 
       objectReference: {fileID: 497127768}
+    - target: {fileID: 1703570212444720077, guid: 837b183c80412c9489efe086937b4e6c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703570212444720077, guid: 837b183c80412c9489efe086937b4e6c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.03
+      objectReference: {fileID: 0}
     - target: {fileID: 2388360898577071121, guid: 837b183c80412c9489efe086937b4e6c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
