@@ -10,11 +10,19 @@ public class MeleeEnemyController : EnemyController
     private float _speed = 0.7f;
     private float _visibilityRange = 0.8f;
 
-    public EnemyMover mover = null;
-    public EnemyMeleeAttacker attacker = null;
+    private EnemyMover mover = null;
+    private EnemyMeleeAttacker attacker = null;
+
+    [SerializeField] private MeleeEnemy _scriptable;
 
     private void Start()
     {
+        _maxHp = _scriptable.MaxHp;
+        _dmg = _scriptable.Dmg;
+        _cooldown = _scriptable.Cooldown;
+        _damageRange = _scriptable.DamageRange;
+        _speed = _scriptable.Speed;
+        _visibilityRange = _scriptable.VisibilityRange;
         _hp = _maxHp;
 
         mover = gameObject.AddComponent<EnemyMover>();

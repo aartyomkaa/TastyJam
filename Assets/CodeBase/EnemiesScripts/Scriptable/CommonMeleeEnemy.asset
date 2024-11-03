@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4cef479e31305a4aaa11afbf6d7463c, type: 3}
   m_Name: CommonMeleeEnemy
   m_EditorClassIdentifier: 
-  Hp: 0
   MaxHp: 100
   Dmg: 35
   Cooldown: 0.85
