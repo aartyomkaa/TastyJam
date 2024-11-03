@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c925cab0cebf47788c88650903544e02, type: 3}
   m_Name: KnightData
   m_EditorClassIdentifier: 
-  Hp: 0
-  Damage: 0
-  MoveSpeed: 0
+  Hp: 100
+  Damage: 6.2
+  MoveSpeed: 20
   EffectiveDistance: 0
-  AggroRange: 0
+  AggroRange: 10
   AttackRange: 0
   Enemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16
