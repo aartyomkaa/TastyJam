@@ -1,4 +1,5 @@
 using System.Collections;
+using CodeBase.StaticData;
 using UnityEngine;
 
 namespace CodeBase.ThrowableObjects
