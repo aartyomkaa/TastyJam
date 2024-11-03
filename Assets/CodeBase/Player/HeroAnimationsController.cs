@@ -36,9 +36,10 @@ namespace CodeBase.Player
 
         private SkeletonAnimation _skeletonAnimation;
         private Spine.AnimationState _spineAnimationState;
-        private Spine.Skeleton _skeleton;
+        private Skeleton _skeleton;
 
         private bool _hasItem = false;
+        private Coroutine _throwCoroutine;
 
 
         void Awake()
@@ -50,11 +51,20 @@ namespace CodeBase.Player
 
         public void SetHasItem(bool hasItem)
         {
+            if (_throwCoroutine != null)
+            {
+                StopCoroutine(_throwCoroutine);
+                _hasItem = false;
+            }
+            UpdateSetItem(hasItem);
+        }
+
+        private void UpdateSetItem(bool hasItem)
+        {
             if (_hasItem == hasItem) return;
 
             string curAnimName = _spineAnimationState.GetCurrent(0).Animation.Name;
             _hasItem = hasItem;
-
             if (_hasItem)
             {
                 if (curAnimName == _runAnimationName)
@@ -107,13 +117,13 @@ namespace CodeBase.Player
             TrackEntry trackEntry = _spineAnimationState.SetAnimation(1, _throwAnimationName, false);
             trackEntry.TimeScale = 1.25f;
 
-            StartCoroutine(WaitAndSetHasItemFalse(trackEntry.AnimationEnd));
+            _throwCoroutine = StartCoroutine(WaitAndSetHasItemFalse(trackEntry.AnimationEnd));
         }
 
         private IEnumerator WaitAndSetHasItemFalse(float waitTime)
         {
             yield return new WaitForSeconds(waitTime);
-            SetHasItem(false);
+            UpdateSetItem(false);
         }
 
         public void Turn()
