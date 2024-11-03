@@ -12,9 +12,9 @@ namespace CodeBase.Player
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag("ThrowableObject"))
+            
+            if (collision.TryGetComponent<ThrowableObject>(out var throwableObject))
             {
-                ThrowableObject throwableObject = collision.GetComponent<ThrowableObject>();
                 if (_playerState.ObjectInHands == null && throwableObject.CanBePickedUp)
                 {
 

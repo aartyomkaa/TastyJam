@@ -312,6 +312,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2398728321715247342, guid: 837b183c80412c9489efe086937b4e6c, type: 3}
+      propertyPath: m_Name
+      value: Hands
+      objectReference: {fileID: 0}
+    - target: {fileID: 3178614652289631446, guid: 837b183c80412c9489efe086937b4e6c, type: 3}
+      propertyPath: _objectsTransform
+      value: 
+      objectReference: {fileID: 497127768}
     - target: {fileID: 5134472107002387744, guid: 837b183c80412c9489efe086937b4e6c, type: 3}
       propertyPath: m_BodyType
       value: 0
@@ -378,9 +386,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectPrefabs:
-  - {fileID: 3888968798785763271, guid: 289c056b921d5ba4ca41818eea0696b9, type: 3}
-  - {fileID: 3888968798785763271, guid: 742785ef26b423f47bf41292010031f5, type: 3}
-  - {fileID: 3888968798785763271, guid: 3969cb21ebf354b49ac5cd063bf6fbe4, type: 3}
+  - {fileID: 306916737257771696, guid: 11860d74ca90b5849b2988a26714ffcc, type: 3}
+  - {fileID: 306916737257771696, guid: 2c4f9a57f96714a44ac560320f1dcf16, type: 3}
+  - {fileID: 306916737257771696, guid: f91817fa08adde84485a3ddb70d082dd, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

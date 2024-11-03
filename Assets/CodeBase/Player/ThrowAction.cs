@@ -5,7 +5,6 @@ namespace CodeBase.Player
 {
     public class ThrowAction : MonoBehaviour
     {
-        [SerializeField] private Transform _throwInitPosition;
         [SerializeField] private Transform _objectsTransform;
         private PlayerState _playerState;
 
