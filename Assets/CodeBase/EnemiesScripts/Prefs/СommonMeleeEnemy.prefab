@@ -10,11 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3527649664349072801}
   - component: {fileID: 7019089935291885972}
-  - component: {fileID: 7648050159917976985}
   - component: {fileID: 5260249732694532862}
   - component: {fileID: 8890938104976360681}
   - component: {fileID: -6366414732192597862}
-  m_Layer: 0
+  - component: {fileID: 4027140619056215117}
+  - component: {fileID: 2300921797420026413}
+  - component: {fileID: 1199440114663458913}
+  m_Layer: 6
   m_Name: "\u0421ommonMeleeEnemy"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,19 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7648050159917976985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6123560694690102695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1db909ca29312a945a0c11f3a0d0f581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptable: {fileID: 11400000, guid: c2542b03392169b46b654c7d55f6213e, type: 2}
 --- !u!58 &5260249732694532862
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -133,9 +122,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.420142}
+  m_Offset: {x: 0, y: -0.29065415}
   serializedVersion: 2
-  m_Radius: 0.35985804
+  m_Radius: 0.48934588
 --- !u!50 &8890938104976360681
 Rigidbody2D:
   serializedVersion: 4
@@ -176,3 +165,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Active: 1
+--- !u!114 &4027140619056215117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6123560694690102695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa57107ecb601644b2aa5be97098e13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2300921797420026413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6123560694690102695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b24ed1f12611da0479f5eb0d6ea95d19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1199440114663458913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6123560694690102695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d30536420f413b8675085b8a1b35b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

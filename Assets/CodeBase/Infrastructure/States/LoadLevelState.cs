@@ -1,7 +1,9 @@
 using CodeBase.CameraLogic;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Services;
+using CodeBase.StaticData;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CodeBase.Infrastructure.States
 {
@@ -48,18 +50,24 @@ namespace CodeBase.Infrastructure.States
 
         private void InitGameWorld()
         {
-            InitSpawners();
-            
             GameObject hero = _gameFactory.CreateHero(GameObject.FindGameObjectWithTag(HeroSpawnTag));
             GameObject knight = _gameFactory.CreateKnight(GameObject.FindGameObjectWithTag(KnightSpawnTag));
-            
+
             //InitHud(hero);
             CameraFollow(knight);
+            InitSpawners(knight);
         }
 
-        private void InitSpawners()
+        private void InitSpawners(GameObject knight)
         {
-            
+            string sceneKey = SceneManager.GetActiveScene().name;
+            LevelStaticData levelData = _staticData.ForLevel(sceneKey);
+
+
+            foreach (EnemyStaticData enemyData in levelData.MonsterTypes)
+            {
+                _gameFactory.CreateSpawner(enemyData, knight.transform);
+            }
         }
 
         private void InitHud(GameObject hero)

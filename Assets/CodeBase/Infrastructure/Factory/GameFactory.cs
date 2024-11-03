@@ -11,7 +11,6 @@ namespace CodeBase.Infrastructure.Factory
     {
         private readonly IAssets _assets;
         private readonly IStaticDataService _staticData;
-        private GameObject HeroGameObject { get; set; }
 
         public GameFactory(IAssets assets, IStaticDataService staticData)
         {
@@ -21,9 +20,9 @@ namespace CodeBase.Infrastructure.Factory
 
         public GameObject CreateHero(GameObject at)
         {
-            HeroGameObject = _assets.InstantiateAt(AssetPath.Hero, at.transform.position);
+            GameObject hero = _assets.InstantiateAt(AssetPath.Hero, at.transform.position);
             
-            return HeroGameObject;
+            return hero;
         }
 
         public GameObject CreateKnight(GameObject at)
@@ -32,6 +31,7 @@ namespace CodeBase.Infrastructure.Factory
             GameObject knight = _assets.InstantiateAt(AssetPath.Knight, at.transform.position);
 
             KnightMover mover = knight.GetComponent<KnightMover>();
+            KnightAttacker attacker = knight.GetComponent<KnightAttacker>();
             
             KnightStateMachine knightStateMachine = new KnightStateMachine(
                 knight.GetComponent<Animator>(),
@@ -40,40 +40,24 @@ namespace CodeBase.Infrastructure.Factory
                 knightData);
             
             mover.Construct(knightData.MoveSpeed);
-            knight.GetComponent<KnightDefender>().Construct(knightStateMachine);
+            attacker.Construct(knightData.Damage, knightData.AttackRadius, knightData.AttackCooldown, knightData.Enemy);
+            knight.GetComponent<KnightDefender>().Construct(knightStateMachine, knightData.Hp);
             
             return knight;
         }
 
         public GameObject CreateHud() => 
             _assets.Instantiate(AssetPath.Hud);
+        
 
-        public GameObject CreateMonster(MonsterTypeID monsterTypeID, Transform parent)
+        public GameObject CreateSpawner(EnemyStaticData enemyType, Transform knight)
         {
-            MonsterStaticData monsterData = _staticData.ForMonster(monsterTypeID);
-            GameObject monster = Object.Instantiate(monsterData.Prefab, parent.position, Quaternion.identity, parent);
-
-            //IHealth health = monster.GetComponent<IHealth>();
-            //health.Current = monsterData.Hp;
-            //health.Max = monsterData.Hp;
+            var prefab = Resources.Load<GameObject>(AssetPath.Spawner);
+            GameObject spawner = Object.Instantiate(prefab, Vector3.zero, Quaternion.identity);
             
-            //monster.GetComponent<ActorUI>().Construct(health);
-            //monster.GetComponent<AgentMoveToPlayer>().Construct(HeroGameObject.transform);
-            //monster.GetComponent<NavMeshAgent>().speed = monsterData.MoveSpeed;
+            spawner.GetComponent<EnemiesSpawner>().Construct(knight, enemyType);
 
-            //LootSpawner loot = monster.GetComponentInChildren<LootSpawner>();
-            //loot.SetLoot(monsterData.MinLoot, monsterData.MaxLoot);
-            //loot.Construckt(this);
-            
-            //Attack.attack = monster.GetComponent<Attack>();
-            //attack.Construct(HeroGameObject.transform);
-            //attack.Damage = monsterData.Damage;
-            //attack.Cleavage = monsterData.Cleavage;
-            //attack.EffectiveDistance = monsterData.EffectiveDistance;
-            
-            //monster.GetComponent<RotateToHero>()?.Construct(HeroGameObject.transform);
-
-            return monster;
+            return spawner;
         }
     }
 }

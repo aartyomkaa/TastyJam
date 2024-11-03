@@ -13,16 +13,19 @@ namespace CodeBase.StaticData
         
         [Range(1, 100)]
         public float MoveSpeed;
-
-        [Range(0.5f, 1f)]
-        public float EffectiveDistance;
         
         [Range(1f, 10f)]
         public float AggroRange;
         
-        [Range(1f, 2f)] 
+        [Range(1f, 5f)] 
         public float AttackRange;
+        
+        [Range(1f, 5f)] 
+        public float AttackRadius;
 
         public LayerMask Enemy;
+        
+        [Range(1f, 5f)] 
+        public float AttackCooldown;
     }
 }

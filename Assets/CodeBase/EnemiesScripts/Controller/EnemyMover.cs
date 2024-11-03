@@ -1,29 +1,26 @@
-using System.Collections;
 using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
-    public delegate void Empty();
-    public event Empty StartAttacking;
-
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
+    private float _moveSpeed;
 
-    public IEnumerator MovingToKnight(float enemySpeed, float enemyVisibilityRange)
+    public void Construct(float moveSpeed) => 
+        _moveSpeed = moveSpeed;
+
+    private void Awake()
     {
         _rb = gameObject.GetComponent<Rigidbody2D>();
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        Vector2 _knightPos = (Vector2)GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-        Vector2 _vectorToKnight = _knightPos - (Vector2)transform.position;
-        while (_vectorToKnight.magnitude > enemyVisibilityRange)
-        {
-            _rb.velocity = _vectorToKnight.normalized * enemySpeed;
-            _knightPos = (Vector2)GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-            _vectorToKnight = _knightPos - (Vector2)transform.position;
-            _spriteRenderer.flipX = _rb.velocity.x < 0;
+    }
 
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-        StartAttacking.Invoke();
+    public void Move(Transform target)
+    {
+        Vector3 vectorToKnight = target.transform.position - transform.position;
+        
+        transform.Translate(vectorToKnight * Time.deltaTime);
+
+        _spriteRenderer.flipX = _rb.velocity.x < 0;
     }
 }
