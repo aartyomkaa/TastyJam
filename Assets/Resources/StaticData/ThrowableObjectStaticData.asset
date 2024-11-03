@@ -15,3 +15,4 @@ MonoBehaviour:
   Speed: 10
   MaxDistance: 6
   DistanceEpsilon: 0.1
+  TimeToDisappear: 4

@@ -1,3 +1,5 @@
+using System.Collections;
+using CodeBase.StaticData;
 using UnityEngine;
 
 namespace CodeBase.ThrowableObjects
@@ -6,23 +8,46 @@ namespace CodeBase.ThrowableObjects
     {
         [SerializeField] private ThrowableObjectStaticData _staticData;
 
+        private ThrowableObjectState _state;
+
         private Vector3 _targetDirection;
         private Vector3 _targetPoint;
 
+        private DisappearableObject _disappear;
 
-        // Current state
-        private bool _isMoving;
+        private float _idleTime;
 
-        public bool CanBePickedUp => !_isMoving;
+
+        public bool CanBePickedUp => _state == ThrowableObjectState.Idle || _state == ThrowableObjectState.Disappearing;
 
         private void Awake()
         {
-            _isMoving = false;
+            _disappear = GetComponent<DisappearableObject>();
+
         }
+
+        private void OnEnable()
+        {
+            _state = ThrowableObjectState.Idle;
+        }
+
+        private void Update()
+        {
+            if (_state == ThrowableObjectState.Idle)
+            {
+                _idleTime += Time.deltaTime;
+                if (_idleTime > _staticData.TimeToDisappear)
+                {
+                    _state = ThrowableObjectState.Disappearing;
+                    _disappear.StartDisappear();
+                }
+            }
+        }
+
 
         private void FixedUpdate()
         {
-            if (_isMoving)
+            if (_state == ThrowableObjectState.Moving)
             {
                 if (Vector3.Distance(transform.position, _targetPoint) > _staticData.DistanceEpsilon)
                 {
@@ -31,10 +56,10 @@ namespace CodeBase.ThrowableObjects
                 }
                 else
                 {
-                    _isMoving = false;
+                    _state = ThrowableObjectState.Idle;
+                    _idleTime = 0;
                 }
             }
-
         }
 
         public void InitThrow(Vector2 targetPoint)
@@ -44,12 +69,17 @@ namespace CodeBase.ThrowableObjects
 
             _targetPoint = transform.position + _targetDirection * _staticData.MaxDistance;
 
-            _isMoving = true;
+            _state = ThrowableObjectState.Moving;
         }
 
         public void PickedUp()
         {
-            _isMoving = false;
+            if (_state == ThrowableObjectState.Disappearing)
+            {
+                _disappear.StopDisappear();
+            }
+
+            _state = ThrowableObjectState.PickedUp;
         }
     }
 }

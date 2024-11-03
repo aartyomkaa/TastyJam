@@ -1,7 +1,7 @@
 using CodeBase.Infrastructure.AssetManagment;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Services;
-using CodeBase.Infrastructure.StaticData;
+using CodeBase.StaticData;
 using UnityEngine.SceneManagement;
 
 namespace CodeBase.Infrastructure.States
@@ -33,7 +33,7 @@ namespace CodeBase.Infrastructure.States
         
         private void RegisterServices()
         {
-            //RegisterStaticData();
+            RegisterStaticData();
             
             _services.RegisterSingle<IAssets>(new AssetsProvider());
             _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssets>(), _services.Single<IStaticDataService>()));
@@ -42,7 +42,7 @@ namespace CodeBase.Infrastructure.States
         private void RegisterStaticData()
         {
             IStaticDataService staticData = new StaticDataService();
-            staticData.LoadMonsters();
+            //staticData.LoadMonsters();
             _services.RegisterSingle<IStaticDataService>(staticData);
         }
     }

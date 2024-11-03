@@ -1,3 +1,4 @@
+using CodeBase.CameraLogic;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Services;
 using UnityEngine;
@@ -6,7 +7,8 @@ namespace CodeBase.Infrastructure.States
 {
     public class LoadLevelState : IPayloadState<string>
     {
-        private const string InitialPointTag = "InitialPoint";
+        private const string HeroSpawnTag = "HeroSpawn";
+        private const string KnightSpawnTag = "KnightSpawn";
 
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
@@ -48,10 +50,11 @@ namespace CodeBase.Infrastructure.States
         {
             InitSpawners();
             
-            //GameObject hero = _gameFactory.CreateHero(GameObject.FindGameObjectWithTag(InitialPointTag));
+            GameObject hero = _gameFactory.CreateHero(GameObject.FindGameObjectWithTag(HeroSpawnTag));
+            GameObject knight = _gameFactory.CreateKnight(GameObject.FindGameObjectWithTag(KnightSpawnTag));
             
             //InitHud(hero);
-            //CameraFollow(hero);
+            CameraFollow(knight);
         }
 
         private void InitSpawners()
@@ -64,9 +67,7 @@ namespace CodeBase.Infrastructure.States
             
         }
 
-        private void CameraFollow(GameObject gameObject)
-        {
-            
-        }
+        private void CameraFollow(GameObject gameObject) => 
+            Camera.main.gameObject.GetComponent<CameraFollow>().Follow(gameObject);
     }
 }
