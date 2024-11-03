@@ -10,6 +10,7 @@ namespace CodeBase.Player
         private Rigidbody2D _playerRb;
         private Camera _camera;
         private Vector2 _screenBounds;
+        private float _playerYOffset;
         private float _playerWidth;
         private float _playerHeight;
 
@@ -28,9 +29,14 @@ namespace CodeBase.Player
             _camera = Camera.main;
             _screenBounds = _camera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, _camera.transform.position.z));
 
-            Vector3 playerSize = GetComponent<SpriteRenderer>().bounds.size;
-            _playerWidth = playerSize.x / 2;
-            _playerHeight = playerSize.y / 2;
+            //Vector3 playerSize = GetComponent<SpriteRenderer>().bounds.size;
+
+            Collider2D collider2d = GetComponent<Collider2D>();
+            Vector2 playerSize = (Vector2)collider2d.bounds.size / 2;
+            _playerYOffset = collider2d.offset.y;
+
+            _playerWidth = playerSize.x;
+            _playerHeight = playerSize.y;
 
             isRunning = false;
             _animationController.Idle();
@@ -104,7 +110,7 @@ namespace CodeBase.Player
 
             Vector3 stayInBoundsPos = transform.position;
             stayInBoundsPos.x = Mathf.Clamp(stayInBoundsPos.x, minBounds.x + _playerWidth, maxBounds.x - _playerWidth);
-            stayInBoundsPos.y = Mathf.Clamp(stayInBoundsPos.y, minBounds.y + _playerHeight, maxBounds.y - _playerHeight);
+            stayInBoundsPos.y = Mathf.Clamp(stayInBoundsPos.y, minBounds.y + _playerHeight - _playerYOffset, maxBounds.y - _playerHeight - _playerYOffset);
             transform.position = stayInBoundsPos;
 
         }
