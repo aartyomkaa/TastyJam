@@ -312,6 +312,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2398728321715247342, guid: 837b183c80412c9489efe086937b4e6c, type: 3}
+      propertyPath: m_Name
+      value: Hands
+      objectReference: {fileID: 0}
+    - target: {fileID: 3178614652289631446, guid: 837b183c80412c9489efe086937b4e6c, type: 3}
+      propertyPath: _objectsTransform
+      value: 
+      objectReference: {fileID: 497127768}
     - target: {fileID: 5134472107002387744, guid: 837b183c80412c9489efe086937b4e6c, type: 3}
       propertyPath: m_BodyType
       value: 0

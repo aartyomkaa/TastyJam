@@ -13,6 +13,7 @@ namespace CodeBase.Player
         private PlayerMovement _playerMovement;
         private PlayerAim _playerAim;
         private ThrowAction _throwAction;
+        private Backpack _backpack;
 
         private PlayerState _playerState;
 
@@ -26,6 +27,7 @@ namespace CodeBase.Player
             _playerInputActions.Player.Enable();
             _playerInputActions.Player.Aim.performed += OnAim;
             _playerInputActions.Player.Throw.performed += OnThrow;
+            _playerInputActions.Player.Swap.performed += OnSwap;
 
             // Camera
             _camera = Camera.main;
@@ -34,11 +36,12 @@ namespace CodeBase.Player
             _playerState = new PlayerState();
 
             // Actions
-            _throwAction = GetComponent<ThrowAction>();
             _playerMovement = GetComponent<PlayerMovement>();
             _playerAim = GetComponent<PlayerAim>();
-
+            _throwAction = GetComponent<ThrowAction>();
             _throwAction.Init(_playerState);
+            _backpack = GetComponent<Backpack>();
+            _backpack.Init(_playerState);
             GetComponent<PickupObjects>().Init(_playerState);
         }
 
@@ -61,6 +64,11 @@ namespace CodeBase.Player
         private void OnThrow(InputAction.CallbackContext context)
         {
             _throwAction.Throw(_playerAim.CurrentCoords);
+        }
+
+        private void OnSwap(InputAction.CallbackContext context)
+        {
+            _backpack.SwapItems();
         }
     }
 }

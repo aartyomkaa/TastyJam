@@ -1,5 +1,4 @@
 using System.Collections;
-using CodeBase.StaticData;
 using UnityEngine;
 
 namespace CodeBase.ThrowableObjects
@@ -23,12 +22,16 @@ namespace CodeBase.ThrowableObjects
         private void Awake()
         {
             _disappear = GetComponent<DisappearableObject>();
+            _state = ThrowableObjectState.Idle;
 
         }
 
         private void OnEnable()
         {
-            _state = ThrowableObjectState.Idle;
+            if (_state != ThrowableObjectState.PickedUp)
+            {
+                _state = ThrowableObjectState.Idle;
+            }
         }
 
         private void Update()
