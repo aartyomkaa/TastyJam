@@ -26,19 +26,20 @@ namespace CodeBase.Knight.KnightFSM
 
         public void Update()
         {
-                if (NeedChaseEnemy())
-                {
-                    _knightStateMachine.SetState<FSMStateChaseEnemy>();
-                }
-                else
-                {
-                    _attacker.Attack();
-                }
+            if (_knightStateMachine.Target == null)
+                return;
             
-            if (_knightStateMachine.Target.Transform.gameObject.activeSelf == false)
+            if (NeedChaseEnemy())
             {
-                _knightStateMachine.SetState<FSMStateIdle>();
+                _knightStateMachine.SetState<FSMStateChaseEnemy>();
             }
+            else
+            {
+                _attacker.Attack(_knightStateMachine.Target.Transform);
+            }
+            
+            if (_knightStateMachine.Target.Transform.gameObject.activeSelf == false) 
+                _knightStateMachine.SetState<FSMStateIdle>();
         }
 
         public void Exit()

@@ -1,28 +1,34 @@
-﻿using CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon;
+﻿using CodeBase.ThrowableObjects;
+using CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon;
 using UnityEngine;
 
 namespace CodeBase.Knight
 {
     public class KnightPickupObjects : MonoBehaviour
     {
+        [SerializeField] private KnightAttacker _attacker;
+        
         private CircleCollider2D _collider;
-        private KnightAttacker _knightAttacker;
 
-        public void Construct(float pickupRadius, KnightAttacker attacker)
+        public void Construct(float pickupRadius)
         {
+            _collider = GetComponent<CircleCollider2D>();
             _collider.radius = pickupRadius;
-            _knightAttacker = attacker;
         }
         
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent<IEquippableObject>(out IEquippableObject pickup))
+            if (other.TryGetComponent<ThrowableObject>(out ThrowableObject pickup))
             {
-                pickup.Equip(transform.position);
+                Debug.Log("1");
                 
-                if (pickup is Weapon weapon)
+                if (pickup.State == ThrowableObjectState.Moving)
                 {
-                    _knightAttacker.Equip(weapon);
+                    if (pickup is Weapon weapon)
+                    {
+                        _attacker.Equip(weapon);
+                        pickup.Equip(transform.position);
+                    }
                 }
             }
         }

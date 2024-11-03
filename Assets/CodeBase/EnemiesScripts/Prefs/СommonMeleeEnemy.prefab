@@ -105,14 +105,14 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -177,6 +177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa57107ecb601644b2aa5be97098e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loot:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &2300921797420026413
 MonoBehaviour:
   m_ObjectHideFlags: 0

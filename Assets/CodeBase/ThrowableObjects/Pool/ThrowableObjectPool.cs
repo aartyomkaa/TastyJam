@@ -1,33 +1,36 @@
 using CodeBase.ThrowableObjects.Objects;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace CodeBase.ThrowableObjects.Pool
 {
-    public class ThrowableObjectPool : MonoBehaviour
+    public class ThrowableObjectPool : MonoBehaviour, IObjectPoolService
     {
         [SerializeField] private List<GameObject> _objectPrefabs;
 
-        private static Transform _parentObjects;
+        private Transform _parentObjects;
         private static List<PooledObjectInfo> _objectPools;
-        private static List<GameObject> _staticObjectPrefabs;
 
-        public static GameObject SpwanThrowableObject(Vector3 spawnPosition)
+        private void Awake()
         {
-            int objectToSpawnIndex = UnityEngine.Random.Range(0, _staticObjectPrefabs.Count);
-            GameObject objectToSpawn = _staticObjectPrefabs[objectToSpawnIndex];
+            _parentObjects = transform;
+            _objectPools = new List<PooledObjectInfo>();
+        }
+
+        public GameObject SpwanThrowableObject(Vector3 spawnPosition)
+        {
+            int objectToSpawnIndex = Random.Range(0, _objectPrefabs.Count);
+            GameObject objectToSpawn = _objectPrefabs[objectToSpawnIndex];
             return SpwanThrowableObject(objectToSpawn, spawnPosition);
         }
 
-        public static GameObject SpwanThrowableObject(GameObject objectToSpawn, Vector3 spawnPosition)
+        public GameObject SpwanThrowableObject(GameObject objectToSpawn, Vector3 spawnPosition)
         {
-            SpawnableObject spawnableObject = objectToSpawn.GetComponent<SpawnableObject>();
+            ThrowableObject spawnableObject = objectToSpawn.GetComponent<ThrowableObject>();
 
             PooledObjectInfo pool = _objectPools.Find(p => p.LookupString == spawnableObject.GetType().Name);
-
+            
             if (pool == null)
             {
                 pool = new PooledObjectInfo() { LookupString = spawnableObject.GetType().Name };
@@ -54,7 +57,7 @@ namespace CodeBase.ThrowableObjects.Pool
 
         public static void ReturnObjectToPool(GameObject obj)
         {
-            PooledObjectInfo pool = _objectPools.Find(p => p.LookupString == obj.GetComponent<SpawnableObject>().GetType().Name);
+            PooledObjectInfo pool = _objectPools.Find(p => p.LookupString == obj.GetComponent<ThrowableObject>().GetType().Name);
 
             if (pool == null)
             {
@@ -66,23 +69,5 @@ namespace CodeBase.ThrowableObjects.Pool
                 pool.InactiveObjects.Add(obj);
             }
         }
-
-        private void Awake()
-        {
-            _parentObjects = transform;
-            _objectPools = new List<PooledObjectInfo>();
-            _staticObjectPrefabs = _objectPrefabs;
-        }
-
-        private void Start()
-        {
-            SpwanThrowableObject(new Vector3(2, 2, 0));
-            SpwanThrowableObject(new Vector3(-2, -2, 0));
-            SpwanThrowableObject(new Vector3(4, -4, 0));
-            SpwanThrowableObject(new Vector3(-4, 4, 0));
-        }
-
-
-
     }
 }

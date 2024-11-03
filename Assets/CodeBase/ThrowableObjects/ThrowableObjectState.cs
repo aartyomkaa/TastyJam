@@ -9,6 +9,8 @@ namespace CodeBase.ThrowableObjects
         Moving,
         Idle,
         Disappearing,
-        PickedUp
+        PickedUp,
+        Weapon,
+        Dropped
     }
 }

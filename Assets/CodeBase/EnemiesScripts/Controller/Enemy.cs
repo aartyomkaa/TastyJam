@@ -2,17 +2,20 @@ using System;
 using CodeBase.EnemiesScripts.Controller;
 using CodeBase.Logic;
 using CodeBase.StaticData;
+using CodeBase.ThrowableObjects;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour, IHealth
 {
+    [SerializeField] private ThrowableObject[] _loot;
     private EnemyMover _enemyMover;
     private EnemyAttacker _enemyAttacker;
     private Transform _knight;
     private EnemyStaticData _data;
-    private float _health;
-    
+
     public event Action HealthChanged;
+    public event Action<Enemy> HasDied;
     public float Current { get; set; }
     public float Max { get; set; }
     public Transform Transform => transform;
@@ -21,7 +24,7 @@ public class Enemy : MonoBehaviour, IHealth
     {
         _knight = knight;
         _data = data;
-        _health = _data.MaxHp;
+        Current = _data.MaxHp;
 
         _enemyMover = GetComponent<EnemyMover>();
         _enemyAttacker = GetComponent<EnemyAttacker>();
@@ -44,14 +47,15 @@ public class Enemy : MonoBehaviour, IHealth
     
     public void TakeDamage(float damage)
     {
-        _health -= damage;
+        Current -= damage;
 
-        if (_health <= 0)
+        if (Current <= 0)
             Die();
     }
 
     private void Die()
     {
+        HasDied?.Invoke(this);
         gameObject.SetActive(false);
     }
 }

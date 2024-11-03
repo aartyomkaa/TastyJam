@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using CodeBase.CameraLogic;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Services;
 using CodeBase.StaticData;
+using CodeBase.ThrowableObjects;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -62,8 +64,7 @@ namespace CodeBase.Infrastructure.States
         {
             string sceneKey = SceneManager.GetActiveScene().name;
             LevelStaticData levelData = _staticData.ForLevel(sceneKey);
-
-
+            
             foreach (EnemyStaticData enemyData in levelData.MonsterTypes)
             {
                 _gameFactory.CreateSpawner(enemyData, knight.transform);

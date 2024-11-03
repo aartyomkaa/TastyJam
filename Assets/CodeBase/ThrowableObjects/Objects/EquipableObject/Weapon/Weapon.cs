@@ -1,21 +1,26 @@
-using CodeBase.Logic;
 using System.Collections;
-using System.Collections.Generic;
+using CodeBase.Logic;
 using UnityEngine;
 
 namespace CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon
 {
-    public abstract class Weapon : EquipableObject
+    public abstract class Weapon : ThrowableObject
     {
         [SerializeField] internal Transform _attackArea;
         [SerializeField] internal float _damage;
         [SerializeField] internal float _durability;
+        [SerializeField] private float _attackCooldown;
+        [SerializeField] private LayerMask _enemyMask;
+        
+        private Collider2D[] _hitColliders;
 
         internal readonly float _durabilityChangeStep = 1f;
+        private bool _isOnCooldown;
 
         public float CurrentDurability { get; set; }
+        public float MaxDurability => _durability;
 
-        internal abstract Collider2D[] FindTargets(Vector2 attackerPosition, Vector2 attackDirection);
+        internal abstract Collider2D[] FindTargets(Vector2 attackerPosition, Vector2 attackDirection, LayerMask mask);
 
         internal virtual void CalcDurability()
         {
@@ -26,54 +31,36 @@ namespace CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon
             }
         }
 
-        public bool Attack(Vector2 attackerPosition, Vector2 attackDirection)
+        public void Attack(Vector2 attackerPosition, Vector2 attackDirection)
         {
-            bool attackPerformed = false;
-            var raycastHit = FindTargets(attackerPosition, attackDirection);
+            if (_isOnCooldown)
+                return;
+            
+            _hitColliders = FindTargets(attackerPosition, attackDirection, _enemyMask);
 
-            if (raycastHit.Length > 0)
+            if (_hitColliders.Length > 0)
             {
-                foreach (var hit in raycastHit)
+                foreach (var hit in _hitColliders)
                 {
                     if (hit.gameObject.TryGetComponent<IHealth>(out var enemy))
                     {
                         Debug.Log($"{hit.gameObject.name} took {_damage} damage");
                         enemy.TakeDamage(_damage);
-                        attackPerformed = true;
+                        CalcDurability();
                     }
                 }
+                
+                StartCoroutine(AttackCoroutine());
             }
-
-            if (attackPerformed)
-            {
-                CalcDurability();
-            }
-
-            return attackPerformed;
         }
-
-        private void Awake()
+        
+        private IEnumerator AttackCoroutine()
         {
-            CurrentDurability = _durability;
-        }
+            _isOnCooldown = true;
 
-        private void OnEnable()
-        {
-            CurrentDurability = _durability;
-        }
+            yield return new WaitForSeconds(_attackCooldown);
 
-        private void Start()
-        {
-            StartCoroutine(LoopAttack());
-        }
-
-        private IEnumerator LoopAttack()
-        {
-            while (true)
-            {
-                Attack(transform.position, Vector2.right);
-                yield return new WaitForSeconds(0.1f);
-            }
+            _isOnCooldown = false;
         }
     }
 }

@@ -9,7 +9,8 @@ namespace CodeBase.ThrowableObjects
     {
         [SerializeField] private ThrowableObjectStaticData _staticData;
 
-        private ThrowableObjectState _state;
+        [SerializeField] private ThrowableObjectState _state;
+        [SerializeField] private bool _isOnKnight;
 
         private Vector3 _targetDirection;
         private Vector3 _targetPoint;
@@ -18,6 +19,7 @@ namespace CodeBase.ThrowableObjects
 
         private float _idleTime;
 
+        public ThrowableObjectState State => _state;
 
         public bool CanBePickedUp => _state == ThrowableObjectState.Idle || _state == ThrowableObjectState.Disappearing;
 
@@ -29,6 +31,12 @@ namespace CodeBase.ThrowableObjects
 
         private void OnEnable()
         {
+            if (_isOnKnight)
+            {
+                _state = ThrowableObjectState.Weapon;
+                return;
+            }
+            
             _state = ThrowableObjectState.Idle;
         }
 
