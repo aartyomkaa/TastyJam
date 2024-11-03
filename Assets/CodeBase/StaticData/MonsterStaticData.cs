@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CodeBase.Infrastructure.StaticData
+namespace CodeBase.StaticData
 {
     public class MonsterStaticData : ScriptableObject
     {

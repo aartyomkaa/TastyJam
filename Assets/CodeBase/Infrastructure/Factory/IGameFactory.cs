@@ -1,5 +1,5 @@
 using CodeBase.Infrastructure.Services;
-using CodeBase.Infrastructure.StaticData;
+using CodeBase.StaticData;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Factory
@@ -9,6 +9,8 @@ namespace CodeBase.Infrastructure.Factory
         GameObject CreateHero(GameObject at);
         GameObject CreateHud();
         GameObject CreateMonster(MonsterTypeID monsterTypeID, Transform parent);
+
+        GameObject CreateKnight(GameObject at);
         //LootPiece CreateLoot();
         //void CreateSpawner(Vector3 at, string spawnerId, MonsterTypeID spawnerDataMonsterTypeID);
     }

@@ -1,6 +1,8 @@
 using CodeBase.Infrastructure.AssetManagment;
 using CodeBase.Infrastructure.Services;
-using CodeBase.Infrastructure.StaticData;
+using CodeBase.Knight;
+using CodeBase.Knight.KnightFSM;
+using CodeBase.StaticData;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Factory
@@ -22,6 +24,25 @@ namespace CodeBase.Infrastructure.Factory
             HeroGameObject = _assets.InstantiateAt(AssetPath.Hero, at.transform.position);
             
             return HeroGameObject;
+        }
+
+        public GameObject CreateKnight(GameObject at)
+        {
+            KnightStaticData knightData = _staticData.ForKnight();
+            GameObject knight = _assets.InstantiateAt(AssetPath.Knight, at.transform.position);
+
+            KnightMover mover = knight.GetComponent<KnightMover>();
+            
+            KnightStateMachine knightStateMachine = new KnightStateMachine(
+                knight.GetComponent<Animator>(),
+                mover,
+                knight.GetComponent<KnightAttacker>(),
+                knightData);
+            
+            mover.Construct(knightData.MoveSpeed);
+            knight.GetComponent<KnightDefender>().Construct(knightStateMachine);
+            
+            return knight;
         }
 
         public GameObject CreateHud() => 

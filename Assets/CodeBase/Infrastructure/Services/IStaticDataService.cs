@@ -1,4 +1,4 @@
-using CodeBase.Infrastructure.StaticData;
+using CodeBase.StaticData;
 
 namespace CodeBase.Infrastructure.Services
 {
@@ -6,5 +6,6 @@ namespace CodeBase.Infrastructure.Services
     {
         void LoadMonsters();
         MonsterStaticData ForMonster(MonsterTypeID typeID);
+        KnightStaticData ForKnight();
     }
 }
