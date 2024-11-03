@@ -1,12 +1,10 @@
-using CodeBase.Logic;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon
 {
-    public class Sword : Weapon
+    public class Fists : Weapon
     {
         internal override Collider2D[] FindTargets(Vector2 attackerPosition, Vector2 attackDirection)
         {
@@ -14,6 +12,10 @@ namespace CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon
             Vector2 attackPoint = attackerPosition + attackDirection.normalized * scale.x / 2;
             var raycastHit = Physics2D.OverlapBoxAll(attackPoint, scale, 0);
             return raycastHit;
+        }
+        internal override void CalcDurability()
+        {
+            return;
         }
     }
 }
