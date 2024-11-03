@@ -9,6 +9,12 @@ namespace CodeBase.Player
     {
         [SerializeField] private Transform handsArea;
         private PlayerState _playerState;
+        private HeroAnimationsController _animationController;
+
+        private void Awake()
+        {
+            _animationController = GetComponentInChildren<HeroAnimationsController>();
+        }
 
         private void OnTriggerStay2D(Collider2D collision)
         {
@@ -21,6 +27,8 @@ namespace CodeBase.Player
                     collision.transform.SetParent(handsArea, false);
                     collision.transform.localPosition = Vector3.zero;
                     _playerState.ObjectInHands = collision.gameObject;
+
+                    _animationController.SetHasItem(true);
 
                     throwableObject.PickedUp();
                 }

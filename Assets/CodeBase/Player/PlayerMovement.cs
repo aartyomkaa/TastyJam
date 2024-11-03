@@ -6,6 +6,7 @@ namespace CodeBase.Player
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private PlayerStaticData _movementStats;
+        private HeroAnimationsController _animationController;
         private Rigidbody2D _playerRb;
         private Camera _camera;
         private Vector2 _screenBounds;
@@ -16,11 +17,12 @@ namespace CodeBase.Player
         private Vector2 _inputVector;
 
         // Player state
-        private HorizontalDirection _horizontalDirection;
         private Vector2 _frameVelocity;
+        private bool isRunning;
 
         private void Awake()
         {
+            _animationController = GetComponent<HeroAnimationsController>();
             _playerRb = GetComponent<Rigidbody2D>();
 
             _camera = Camera.main;
@@ -29,6 +31,9 @@ namespace CodeBase.Player
             Vector3 playerSize = GetComponent<SpriteRenderer>().bounds.size;
             _playerWidth = playerSize.x / 2;
             _playerHeight = playerSize.y / 2;
+
+            isRunning = false;
+            _animationController.Idle();
 
         }
 
@@ -55,14 +60,6 @@ namespace CodeBase.Player
             {
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _inputVector.x * _movementStats.MaxSpeed, _movementStats.Acceleration * Time.fixedDeltaTime);
             }
-            if (_inputVector.x > 0 && _horizontalDirection != HorizontalDirection.Right)
-            {
-                _horizontalDirection = HorizontalDirection.Right;
-            }
-            else if (_inputVector.x < 0 && _horizontalDirection != HorizontalDirection.Left)
-            {
-                _horizontalDirection = HorizontalDirection.Left;
-            }
 
             // Vertical
             if (_inputVector.y == 0)
@@ -76,7 +73,27 @@ namespace CodeBase.Player
 
         }
 
-        private void ApplyMovement() => _playerRb.velocity = _frameVelocity;
+        private void ApplyMovement()
+        {
+            if (_frameVelocity == Vector2.zero)
+            {
+                if (isRunning)
+                {
+                    isRunning = false;
+                    _animationController.Idle();
+                }
+            }
+            else
+            {
+                if (!isRunning)
+                {
+                    isRunning = true;
+                    _animationController.Run();
+                }
+            }
+
+            _playerRb.velocity = _frameVelocity;
+        }
 
         private void StayInBounds()
         {
@@ -92,11 +109,5 @@ namespace CodeBase.Player
 
         }
 
-    }
-
-    public enum HorizontalDirection
-    {
-        Left,
-        Right
     }
 }
