@@ -11,11 +11,13 @@ namespace CodeBase.Knight
         [SerializeField] private KnightAnimationsController _animator;
 
         private Weapon _currentWeapon;
+        private Fists _fists;
         private HorizontalDirection _horizontalDirection;
 
         private void Start()
         {
             EquipFists();
+            _fists = (Fists)_currentWeapon;
             _horizontalDirection = HorizontalDirection.Right;
         }
 
@@ -24,47 +26,42 @@ namespace CodeBase.Knight
             if (_currentWeapon.IsOnCooldown)
                 return;
             
-            if (_currentWeapon.CurrentDurability == 0)
+            if (_currentWeapon.CurrentDurability <= 0 && _currentWeapon != _fists)
                 EquipFists();
             
-            Vector2 attackDirection = transform.position - target.transform.position;
-            
-            if (attackDirection.x > 0 && _horizontalDirection != HorizontalDirection.Right)
-            {
-                _horizontalDirection = HorizontalDirection.Right;
-                _animator.Turn();
-            }
-            else if (attackDirection.x < 0 && _horizontalDirection != HorizontalDirection.Left)
-            {
-                _horizontalDirection = HorizontalDirection.Left;
-                _animator.Turn();
-            }
-            
+            Vector2 attackDirection = target.transform.position - transform.position;
+
             _animator.Attack();
             _currentWeapon.Attack(transform.position, attackDirection);
         }
 
         public void Equip(Weapon weapon)
         {
-            _currentWeapon.gameObject.SetActive(false);
-            
-            foreach (var stashed in _weapons)
+            if (_currentWeapon.GetType() == weapon.GetType())
             {
-                if (stashed.GetType() == weapon.GetType())
+                _currentWeapon.CurrentDurability = _currentWeapon.MaxDurability;
+            }
+            else
+            {
+                foreach (var stashed in _weapons)
                 {
-                    _currentWeapon = stashed;
-                    _currentWeapon.gameObject.SetActive(true);
-                    _currentWeapon.CurrentDurability = _currentWeapon.MaxDurability;
+                    if (stashed.GetType() == weapon.GetType())
+                    {
+                        _currentWeapon.gameObject.SetActive(false);
+                        _currentWeapon = stashed;
+                        _currentWeapon.gameObject.SetActive(true);
+                        _currentWeapon.CurrentDurability = _currentWeapon.MaxDurability;
 
-                    if (_currentWeapon is Sword)
-                    {
-                        _animator.SetSwordSkin();
+                        if (_currentWeapon is Sword)
+                        {
+                            _animator.SetSwordSkin();
+                        }
+                        else
+                        {
+                            _animator.SetPoleaxeSkin();
+                        }
                     }
-                    else
-                    {
-                        _animator.SetPoleaxeSkin();
-                    }
-                }
+                } 
             }
         }
 

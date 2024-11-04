@@ -20,8 +20,6 @@ namespace CodeBase.Knight
         {
             if (other.TryGetComponent<ThrowableObject>(out ThrowableObject pickup))
             {
-                Debug.Log("1");
-                
                 if (pickup.State == ThrowableObjectState.Moving)
                 {
                     if (pickup is Weapon weapon)

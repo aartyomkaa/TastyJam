@@ -45,6 +45,8 @@ public class Enemy : MonoBehaviour, IHealth
         {
             _enemyAttacker.Attack();
         }
+        
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
     
     public void TakeDamage(float damage)

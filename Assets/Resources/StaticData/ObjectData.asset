@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ObjectData
   m_EditorClassIdentifier: 
   Speed: 10
-  MaxDistance: 5
+  MaxDistance: 20
   DistanceEpsilon: 0.1
-  TimeToDisappear: 2
+  TimeToDisappear: 3

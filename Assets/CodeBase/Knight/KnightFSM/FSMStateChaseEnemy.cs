@@ -8,10 +8,10 @@ namespace CodeBase.Knight.KnightFSM
     {
         private readonly KnightStateMachine _knightStateMachine;
         private readonly KnightMover _movement;
-        private readonly Animator _animator;
+        private readonly KnightAnimationsController _animator;
         private readonly KnightStaticData _data;
 
-        public FSMStateChaseEnemy(KnightStateMachine knightStateMachine, KnightMover movement, Animator animator, KnightStaticData data)
+        public FSMStateChaseEnemy(KnightStateMachine knightStateMachine, KnightMover movement, KnightAnimationsController animator, KnightStaticData data)
         {
             _knightStateMachine = knightStateMachine;
             _movement = movement;
@@ -21,6 +21,7 @@ namespace CodeBase.Knight.KnightFSM
 
         public void Enter()
         {
+            _animator.Run();
         }
 
         public void Update()

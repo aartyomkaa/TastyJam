@@ -22,21 +22,19 @@ public class EnemyMover : MonoBehaviour
 
     public void Move(Transform target)
     {
-        Vector3 vectorToKnight = target.transform.position - transform.position;
+        Vector2 vectorToKnight = target.transform.position - transform.position;
         
-        transform.Translate(vectorToKnight * Time.deltaTime);
+        transform.position = Vector2.Lerp(transform.position, target.position, _moveSpeed * Time.deltaTime);
 
         if (vectorToKnight.x > 0 && _horizontalDirection != HorizontalDirection.Right)
         {
             _horizontalDirection = HorizontalDirection.Right;
-            //_enemyAnimationsController.Turn();
+            _enemyAnimationsController.Turn();
         }
         else if (vectorToKnight.x < 0 && _horizontalDirection != HorizontalDirection.Left)
         {
             _horizontalDirection = HorizontalDirection.Left;
-           // _enemyAnimationsController.Turn();
+            _enemyAnimationsController.Turn();
         }
-
-
     }
 }

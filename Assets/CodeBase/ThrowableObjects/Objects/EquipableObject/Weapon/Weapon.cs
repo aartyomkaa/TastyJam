@@ -20,11 +20,11 @@ namespace CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon
         public float CurrentDurability { get; set; }
         public float MaxDurability => _durability;
         public bool IsOnCooldown => _isOnCooldown;
-        
 
-        internal abstract Collider2D[] FindTargets(Vector2 attackerPosition, Vector2 attackDirection, LayerMask mask);
 
-        internal virtual void CalcDurability()
+        protected abstract Collider2D[] FindTargets(Vector2 attackerPosition, Vector2 attackDirection, LayerMask mask);
+
+        protected virtual void CalcDurability()
         {
             CurrentDurability -= _durabilityChangeStep;
             if (CurrentDurability <= 0)
@@ -35,10 +35,7 @@ namespace CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon
 
         public void Attack(Vector2 attackerPosition, Vector2 attackDirection)
         {
-            if (_isOnCooldown)
-                return;
-            
-            _hitColliders = FindTargets(attackerPosition, attackDirection, _enemyMask);
+            _hitColliders = FindTargets(transform.position, attackDirection, _enemyMask);
 
             if (_hitColliders.Length > 0)
             {
@@ -48,12 +45,13 @@ namespace CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon
                     {
                         Debug.Log($"{hit.gameObject.name} took {_damage} damage");
                         enemy.TakeDamage(_damage);
-                        CalcDurability();
                     }
                 }
                 
-                StartCoroutine(AttackCoroutine());
+                CalcDurability();
             }
+            
+            StartCoroutine(AttackCoroutine());
         }
         
         private IEnumerator AttackCoroutine()

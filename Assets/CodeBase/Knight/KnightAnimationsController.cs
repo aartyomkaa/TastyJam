@@ -66,8 +66,6 @@ namespace CodeBase.Knight
             _spineAnimationState = _skeletonAnimation.AnimationState;
             _skeleton = _skeletonAnimation.Skeleton;
             _isRunning = false;
-            
-            Debug.Log(_skeleton);
         }
         public void Run()
         {

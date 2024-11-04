@@ -33,10 +33,10 @@ namespace CodeBase.Infrastructure.Factory
             KnightMover mover = knight.GetComponent<KnightMover>();
             
             KnightStateMachine knightStateMachine = new KnightStateMachine(
-                knight.GetComponent<Animator>(),
                 mover,
                 knight.GetComponent<KnightAttacker>(),
-                knightData);
+                knightData,
+                knight.GetComponent<KnightAnimationsController>());
             
             mover.Construct(knightData.MoveSpeed);
             knight.GetComponentInChildren<KnightPickupObjects>().Construct(knightData.PickUpRange);
