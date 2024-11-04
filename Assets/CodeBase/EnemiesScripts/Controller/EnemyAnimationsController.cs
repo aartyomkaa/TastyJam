@@ -50,6 +50,7 @@ namespace CodeBase.EnemiesScripts.Controller
         public void TakeDamage()
         {
             _spineAnimationState.SetAnimation(1, _takeDamamgeAnimationName, false);
+            _sounds.PlayTakeDamageClip();
         }
         public void Die()
         {
@@ -64,6 +65,12 @@ namespace CodeBase.EnemiesScripts.Controller
         public void Turn()
         {
             _skeleton.ScaleX *= -1;
+        }
+
+        public enum AttackType
+        {
+            Weapon,
+            Fists
         }
     }
 }
