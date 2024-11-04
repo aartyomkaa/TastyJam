@@ -75,6 +75,6 @@ public class DialogueSystem : MonoBehaviour
                 yield return null;
         }
         
-        _sceneLoader.SceneChange(_dialogueNum + 1);
+        _sceneLoader.SceneChange(_dialogueNum);
     }
 }

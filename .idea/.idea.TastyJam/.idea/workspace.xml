@@ -6,11 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="65fbf09f-26ec-4b24-a77d-9ea3db294dd9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TastyJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TastyJam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/GameBootstrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/GameBootstrapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/StaticData/Levels/Level1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/StaticData/Levels/Level1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/StaticData/Levels/Level2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/StaticData/Levels/Level2.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/DialogueSystem/DialogueSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/DialogueSystem/DialogueSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/States/LoadLevelState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/States/LoadLevelState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Player/PlayerActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Player/PlayerActions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/PlayerUI/PlayerUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/PlayerUI/PlayerUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/StaticData/Levels/TestLevel1 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/StaticData/Levels/TestLevel1 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/StaticData/Levels/TestLevel1 2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/StaticData/Levels/TestLevel1 2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dialogue2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dialogue2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dialogue3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dialogue3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FinalLevels/2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FinalLevels/2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

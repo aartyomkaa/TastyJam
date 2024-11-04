@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -43,6 +44,16 @@ namespace CodeBase.Player
             _backpack = GetComponent<Backpack>();
             _backpack.Init(_playerState);
             GetComponent<PickupObjects>().Init(_playerState);
+        }
+
+        private void OnEnable()
+        {
+            _playerInputActions.Player.Enable();
+        }
+
+        private void OnDisable()
+        {
+            _playerInputActions.Player.Disable();
         }
 
         private void Update()

@@ -6,13 +6,14 @@ using CodeBase.StaticData;
 using CodeBase.ThrowableObjects;
 using CodeBase.ThrowableObjects.Pool;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class EnemiesSpawner : MonoBehaviour
 {
-    [SerializeField] private int _enemiesCount = 20;
+    [SerializeField] private int _enemiesCount = 5;
     [SerializeField] private int _minGroupCount = 1;
-    [SerializeField] private int _maxGroupCount = 5;
+    [SerializeField] private int _maxGroupCount = 2;
     [SerializeField] private float _minSpawnDelay = 7;
     [SerializeField] private float _maxSpawnDelay = 7;
     [SerializeField] private float _randomRange = 0.1f;
@@ -34,6 +35,19 @@ public class EnemiesSpawner : MonoBehaviour
 
     private void Start()
     {
+        if (SceneManager.GetActiveScene().name == "3")
+        {
+            _enemiesCount = 10;
+            _minGroupCount = 1;
+            _maxGroupCount = 2;
+        }
+        else if (SceneManager.GetActiveScene().name == "4")
+        {
+            _enemiesCount = 20;
+            _minGroupCount = 1;
+            _maxGroupCount = 3;
+        }
+
         StartCoroutine(Spawning());
     }
 
