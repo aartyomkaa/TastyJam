@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a22957888662c4d8d8593e25bd29f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogueNum: 3
+  _dialogueNum: 6
   _names:
   - "\u0414\u0430\u043C\u0438\u0430\u043D"
   - "\u0422\u0440\u0438\u0441\u0442\u0430\u043D"

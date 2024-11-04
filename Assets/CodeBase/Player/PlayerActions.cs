@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -69,6 +70,11 @@ namespace CodeBase.Player
         private void OnSwap(InputAction.CallbackContext context)
         {
             _backpack.SwapItems();
+        }
+
+        private void OnDisable()
+        {
+            _playerInputActions.Disable();
         }
     }
 }

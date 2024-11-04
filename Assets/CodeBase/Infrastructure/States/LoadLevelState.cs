@@ -1,6 +1,7 @@
 using CodeBase.CameraLogic;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Services;
+using CodeBase.Knight;
 using CodeBase.StaticData;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -52,8 +53,8 @@ namespace CodeBase.Infrastructure.States
         {
             GameObject hero = _gameFactory.CreateHero(GameObject.FindGameObjectWithTag(HeroSpawnTag));
             GameObject knight = _gameFactory.CreateKnight(GameObject.FindGameObjectWithTag(KnightSpawnTag));
-
-            InitHud(hero);
+            
+            InitHud(knight);
             CameraFollow(knight);
             return InitSpawners(knight);
         }
@@ -74,7 +75,9 @@ namespace CodeBase.Infrastructure.States
 
         private void InitHud(GameObject hero)
         {
+            GameObject hud = _gameFactory.CreateHud();
             
+            hud.GetComponent<PlayerUI>().Construct(hero.GetComponent<KnightDefender>());
         }
 
         private void CameraFollow(GameObject gameObject) => 
