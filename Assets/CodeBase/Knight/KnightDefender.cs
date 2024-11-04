@@ -3,6 +3,7 @@ using CodeBase.Knight.KnightFSM;
 using CodeBase.Logic;
 using CodeBase.Logic.Utilities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CodeBase.Knight
 {
@@ -11,6 +12,7 @@ namespace CodeBase.Knight
         private KnightStateMachine _stateMachine;
         private KnightAnimationsController _animator;
         private HorizontalDirection _horizontalDirection;
+        [SerializeField] private SceneLoader _sceneLoader;
 
         public float Current { get; set; }
         public float Max { get; set; }
@@ -65,6 +67,10 @@ namespace CodeBase.Knight
 
         private void Die()
         {
+            if (SceneManager.GetActiveScene().name == "4")
+            {
+                _sceneLoader?.SceneChange(7);
+            }
             _animator.Die();
             Destroy(gameObject);
         }
