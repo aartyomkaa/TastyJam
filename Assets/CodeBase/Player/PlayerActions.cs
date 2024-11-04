@@ -45,6 +45,16 @@ namespace CodeBase.Player
             GetComponent<PickupObjects>().Init(_playerState);
         }
 
+        private void OnEnable()
+        {
+            _playerInputActions.Player.Enable();
+        }
+
+        private void OnDisable()
+        {
+            _playerInputActions.Player.Disable();
+        }
+
         private void Update()
         {
             _inputVector = _playerInputActions.Player.Move.ReadValue<Vector2>();
