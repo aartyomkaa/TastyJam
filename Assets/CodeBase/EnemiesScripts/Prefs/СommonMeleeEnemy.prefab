@@ -181,8 +181,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackSounds:
-  - {fileID: 8300000, guid: b5f7bb1a10f88334390f2f3b7970f075, type: 3}
-  - {fileID: 8300000, guid: 39ac84a4ba9e6da43901b344ded92b03, type: 3}
+  - {fileID: 8300000, guid: 7f7b3bb24e92c61408b18fcb3cc59966, type: 3}
+  - {fileID: 8300000, guid: 75c35d7253f341c42a55ce752e6900f5, type: 3}
 --- !u!1 &7668803097322752121
 GameObject:
   m_ObjectHideFlags: 0
