@@ -1,24 +1,30 @@
-using System;
+using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogueSystem : MonoBehaviour
 {
+    [SerializeField] private string[] _names;
+    [SerializeField] private string[] _texts;
+    [SerializeField] private Sprite[] _icons;
+    [SerializeField] private int _flashBackStart;
+    [SerializeField] private int _flashBackEnd;
+    [Space]
     [SerializeField] private TextAsset _textAsset;
     [SerializeField] private Text _dialogueTitle;
     [SerializeField] private Text _dialogueText;
     [SerializeField] private Image _dialogueIcon;
-    private DialogueLoader _loader;
-    private Dialogue _dialogue;
+    [SerializeField] private Image _flashbackImage;
+    //private DialogueLoader _loader;
+    //private Dialogue _dialogue;
     private string _symbolsToDelay = ".?!";
 
 
     private void Start()
     {
-        _loader = gameObject.AddComponent<DialogueLoader>();
-        _dialogue = _loader.LoadDialogue(_textAsset.text);
+        //_loader = gameObject.AddComponent<DialogueLoader>();
+        //_dialogue = _loader.LoadDialogue(_textAsset.text);
 
 
         //
@@ -38,16 +44,20 @@ public class DialogueSystem : MonoBehaviour
 
     public IEnumerator StartDialogue()
     {
-        for (int i = 0; i < _dialogue.Prases.Length; i++)
+        for (int i = 0; i < _names.Length; i++)
         {
-            Phrase phrase = _dialogue.Prases[i];
-            _dialogueTitle.text = phrase.Name;
-            _dialogueIcon.overrideSprite = Resources.Load<Sprite>(phrase.IconPath);
+            if (i != 0)
+                if (_flashBackStart == i)
+                    _flashbackImage.DOFade(1, 1);
+                else if (_flashBackEnd == i)
+                    _flashbackImage.DOFade(0, 1);
+            _dialogueTitle.text = _names[i];
+            _dialogueIcon.overrideSprite = _icons[i];
             _dialogueText.text = "";
-            for (int j = 0; j < phrase.Text.Length; j++)
+            for (int j = 0; j < _texts[i].Length; j++)
             {
-                _dialogueText.text = _dialogueText.text + phrase.Text[j];
-                yield return new WaitForSeconds(_symbolsToDelay.Contains(phrase.Text[j]) ? 0.5f : 0.05f);
+                _dialogueText.text = _dialogueText.text + _texts[i][j];
+                yield return new WaitForSeconds(_symbolsToDelay.Contains(_texts[i][j]) ? 0.5f : 0.05f);
             }
             while (!Input.GetMouseButtonDown(0))
                 yield return null;
