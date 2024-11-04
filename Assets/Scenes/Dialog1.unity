@@ -541,7 +541,7 @@ MonoBehaviour:
   _dialogueIcon: {fileID: 1115882180}
   _flashbackImage: {fileID: 1813055271}
   _audioSource: {fileID: 328628735}
-  _audioClip: {fileID: 0}
+  _audioClip: {fileID: 8300000, guid: f2a222621799aca48babb2783c629f64, type: 3}
   _sceneLoader: {fileID: 0}
 --- !u!82 &328628735
 AudioSource:
@@ -553,7 +553,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -8541274443625135890, guid: fef6613c97ead8a4994ed0e813f84217, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f2a222621799aca48babb2783c629f64, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

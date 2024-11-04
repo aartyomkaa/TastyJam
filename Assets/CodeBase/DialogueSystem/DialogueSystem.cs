@@ -22,18 +22,19 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private Image _dialogueIcon;
 
     [SerializeField] private Image _flashbackImage;
-    [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audioClip;
 
     [SerializeField] private SceneLoader _sceneLoader;
 
     //private DialogueLoader _loader;
     //private Dialogue _dialogue;
+    private AudioSource _audioSource;
     private string _symbolsToDelay = ".?!";
 
 
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         //_loader = gameObject.AddComponent<DialogueLoader>();
         //_dialogue = _loader.LoadDialogue(_textAsset.text);
 
@@ -68,7 +69,7 @@ public class DialogueSystem : MonoBehaviour
             for (int j = 0; j < _texts[i].Length; j++)
             {
                 _dialogueText.text = _dialogueText.text + _texts[i][j];
-                //_audioSource.PlayOneShot(_audioClip);
+                _audioSource.PlayOneShot(_audioClip);
                 yield return new WaitForSeconds(_symbolsToDelay.Contains(_texts[i][j]) ? _typingDelay * 10 : _typingDelay);
             }
             while (!Input.GetMouseButtonDown(0))
