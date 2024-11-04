@@ -33,6 +33,7 @@ namespace CodeBase.EnemiesScripts.Controller
         private SkeletonAnimation _skeletonAnimation;
         private Spine.AnimationState _spineAnimationState;
         private Skeleton _skeleton;
+        private EnemySounds _sounds;
 
 
         void Awake()
@@ -40,6 +41,7 @@ namespace CodeBase.EnemiesScripts.Controller
             _skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
             _spineAnimationState = _skeletonAnimation.AnimationState;
             _skeleton = _skeletonAnimation.Skeleton;
+            _sounds = GetComponent<EnemySounds>();
         }
         public void Run()
         {
@@ -57,6 +59,7 @@ namespace CodeBase.EnemiesScripts.Controller
         {
             _spineAnimationState.SetAnimation(0, _atackAnimationName, false);
             _spineAnimationState.AddEmptyAnimation(0, 0.2f, 0);
+            _sounds.PlayAttackClip();
         }
         public void Turn()
         {

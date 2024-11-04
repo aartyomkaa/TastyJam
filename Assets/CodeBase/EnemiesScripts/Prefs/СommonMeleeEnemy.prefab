@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2300921797420026413}
   - component: {fileID: 1199440114663458913}
   - component: {fileID: 225573381814616622}
+  - component: {fileID: 2367117315640051562}
   m_Layer: 6
   m_Name: "\u0421ommonMeleeEnemy"
   m_TagString: Untagged
@@ -167,6 +168,21 @@ MonoBehaviour:
   _takeDamamgeAnimationName: damage
   _deathAnimationName: death
   _stunAnimationName: stun
+--- !u!114 &2367117315640051562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6123560694690102695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3338b7aa653302744a3b24cdd98e8e7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackSounds:
+  - {fileID: 8300000, guid: 7f7b3bb24e92c61408b18fcb3cc59966, type: 3}
+  - {fileID: 8300000, guid: 75c35d7253f341c42a55ce752e6900f5, type: 3}
 --- !u!1 &7668803097322752121
 GameObject:
   m_ObjectHideFlags: 0
