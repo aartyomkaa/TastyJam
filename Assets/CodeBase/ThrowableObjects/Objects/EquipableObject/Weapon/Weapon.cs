@@ -11,7 +11,7 @@ namespace CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon
         [SerializeField] internal float _durability;
         [SerializeField] private float _attackCooldown;
         [SerializeField] private LayerMask _enemyMask;
-        
+
         private Collider2D[] _hitColliders;
 
         internal readonly float _durabilityChangeStep = 1f;

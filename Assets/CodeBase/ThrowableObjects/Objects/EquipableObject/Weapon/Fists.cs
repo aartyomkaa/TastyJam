@@ -4,11 +4,19 @@ namespace CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon
 {
     public class Fists : Weapon
     {
+        private BoxCollider2D _attackAreaCollider;
+
+        private void Awake()
+        {
+            _attackAreaCollider = GetComponentInChildren<BoxCollider2D>();
+        }
+
         protected override Collider2D[] FindTargets(Vector2 attackerPosition, Vector2 attackDirection, LayerMask mask)
         {
-            Vector2 scale = new(_attackArea.localScale.x * transform.localScale.x, _attackArea.localScale.y * transform.localScale.y);
-            Vector2 attackPoint = attackerPosition + attackDirection.normalized * scale.x / 2;
-            return Physics2D.OverlapBoxAll(attackPoint, scale, 0, mask);;
+            Vector2 scale = new Vector2(_attackArea.localScale.x * transform.localScale.x, _attackArea.localScale.y * transform.localScale.y) * _attackAreaCollider.size;
+            Vector2 attackPoint = attackerPosition + attackDirection.normalized * scale / 2;
+            Debug.Log($"{attackPoint}; {scale}; {attackDirection.normalized}");
+            return Physics2D.OverlapBoxAll(attackPoint, scale, 0, mask);
         }
 
         protected override void CalcDurability()

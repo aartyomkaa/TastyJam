@@ -38,6 +38,7 @@ namespace CodeBase.ThrowableObjects
             }
             
             _state = ThrowableObjectState.Idle;
+            _disappear = GetComponent<DisappearableObject>();
         }
 
         private void Update()
