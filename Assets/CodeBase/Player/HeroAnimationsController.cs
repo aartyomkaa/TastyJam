@@ -37,6 +37,7 @@ namespace CodeBase.Player
         private SkeletonAnimation _skeletonAnimation;
         private Spine.AnimationState _spineAnimationState;
         private Skeleton _skeleton;
+        private PlayerSounds _sounds;
 
         private bool _hasItem = false;
         private Coroutine _throwCoroutine;
@@ -47,6 +48,7 @@ namespace CodeBase.Player
             _skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
             _spineAnimationState = _skeletonAnimation.AnimationState;
             _skeleton = _skeletonAnimation.Skeleton;
+            _sounds = GetComponent<PlayerSounds>();
         }
 
         public void SetHasItem(bool hasItem)
@@ -91,14 +93,16 @@ namespace CodeBase.Player
 
         public void Run()
         {
+            TrackEntry trackEntry;
             if (_hasItem)
             {
-                _spineAnimationState.SetAnimation(0, _runWithItemAnimationName, true);
+                trackEntry = _spineAnimationState.SetAnimation(0, _runWithItemAnimationName, true);
             }
             else
             {
-                _spineAnimationState.SetAnimation(0, _runAnimationName, true);
+                trackEntry = _spineAnimationState.SetAnimation(0, _runAnimationName, true);
             }
+            _sounds.StartStepSounds(trackEntry.AnimationEnd / 2);
         }
         public void Idle()
         {
@@ -110,14 +114,16 @@ namespace CodeBase.Player
             {
                 _spineAnimationState.SetAnimation(0, _idleAnimationName, true);
             }
+            _sounds.StopStepSounds();
         }
 
         public void Throw()
         {
             TrackEntry trackEntry = _spineAnimationState.SetAnimation(1, _throwAnimationName, false);
             trackEntry.TimeScale = 1.25f;
-
             _throwCoroutine = StartCoroutine(WaitAndSetHasItemFalse(trackEntry.AnimationEnd));
+
+            _sounds.PlayThrowClip();
         }
 
         private IEnumerator WaitAndSetHasItemFalse(float waitTime)
