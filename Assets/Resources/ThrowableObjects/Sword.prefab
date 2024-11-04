@@ -153,7 +153,8 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5472626096959085674, guid: 7d4db60581f8575449b84d95a11266b6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3478048240242019908, guid: 7d4db60581f8575449b84d95a11266b6, type: 3}
@@ -186,6 +187,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b329697885a2508468199afe44b3395e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _staticData: {fileID: 11400000, guid: c7ce04955c108134e961fd0ec02bee78, type: 2}
+  _state: 1
+  _isOnKnight: 0
   _attackArea: {fileID: 466373468518251994}
   _damage: 10
   _durability: 20
+  _attackCooldown: 0
+  _enemyMask:
+    serializedVersion: 2
+    m_Bits: 0

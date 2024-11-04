@@ -33,8 +33,12 @@ namespace CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon
 
         public void Attack(Vector2 attackerPosition, Vector2 attackDirection)
         {
+            Debug.Log(_isOnCooldown);
+            
             if (_isOnCooldown)
                 return;
+
+            Debug.Log("attack");
             
             _hitColliders = FindTargets(attackerPosition, attackDirection, _enemyMask);
 

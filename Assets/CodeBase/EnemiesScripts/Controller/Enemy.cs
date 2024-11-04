@@ -12,11 +12,13 @@ public class Enemy : MonoBehaviour, IHealth
     private EnemyStaticData _data;
     private EnemyAnimationsController _enemyAnimationsController;
     private float _health;
-    
-    public event Action HealthChanged;
+
     public float Current { get; set; }
     public float Max { get; set; }
     public Transform Transform => transform;
+
+    public event Action HealthChanged;
+    public event Action<Enemy> HasDied;
 
     public void Construct(EnemyStaticData data, Transform knight)
     {
@@ -57,6 +59,7 @@ public class Enemy : MonoBehaviour, IHealth
     private void Die()
     {
         _enemyAnimationsController.Die();
+        HasDied?.Invoke(this);
         gameObject.SetActive(false);
     }
 }

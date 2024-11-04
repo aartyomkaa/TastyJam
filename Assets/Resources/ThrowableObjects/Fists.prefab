@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _staticData: {fileID: 11400000, guid: c7ce04955c108134e961fd0ec02bee78, type: 2}
-  _state: 4
+  _state: 1
+  _isOnKnight: 0
   _attackArea: {fileID: 6772862711763674382}
   _damage: 5
   _durability: 0
