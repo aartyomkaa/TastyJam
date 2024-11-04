@@ -59,6 +59,8 @@ namespace CodeBase.Knight
         private Skeleton _skeleton;
         private KnightSounds _sounds;
         private bool _isRunning;
+        private bool _isAttacking;
+        private Coroutine _attackCoroutine;
 
 
         void Awake()
@@ -72,6 +74,10 @@ namespace CodeBase.Knight
         }
         public void Run()
         {
+            if (_isAttacking)
+            {
+                return;
+            }
             _isRunning = true;
             TrackEntry trackEntry = _spineAnimationState.SetAnimation(0, _runAnimationName, true);
 
@@ -79,6 +85,10 @@ namespace CodeBase.Knight
         }
         public void Idle()
         {
+            if (_isAttacking)
+            {
+                return;
+            }
             _isRunning = false;
             _spineAnimationState.SetAnimation(0, _idleAnimationName, true);
 
@@ -86,6 +96,10 @@ namespace CodeBase.Knight
         }
         public void TakeDamage()
         {
+            if (_isAttacking)
+            {
+                return;
+            }
             _spineAnimationState.SetAnimation(1, _takeDamamgeAnimationName, false);
         }
         public void Die()
@@ -96,23 +110,27 @@ namespace CodeBase.Knight
         }
         public void Attack()
         {
+            if (_isAttacking)
+            {
+                return;
+            }
+            _isAttacking = true;
+
+            TrackEntry attackEntry = null;
             _sounds.StopStepSounds();
             if (_skeleton.Skin.Name == _meleeSkinName)
             {
-                _spineAnimationState.SetAnimation(0, _meleeAtackAnimationName, false);
-
+                attackEntry = _spineAnimationState.SetAnimation(0, _meleeAtackAnimationName, false);
                 _sounds.PlayMeleeAttackClip();
             }
             else if (_skeleton.Skin.Name == _swordSkinName)
             {
-                _spineAnimationState.SetAnimation(0, _swordAttackAnimationName, false);
-
+                attackEntry = _spineAnimationState.SetAnimation(0, _swordAttackAnimationName, false);
                 _sounds.PlaySwordAttackClip();
             }
             else if (_skeleton.Skin.Name == _poleaxeSkinName)
             {
-                _spineAnimationState.SetAnimation(0, _poleaxeAttackAnimationName, false);
-
+                attackEntry = _spineAnimationState.SetAnimation(0, _poleaxeAttackAnimationName, false);
                 _sounds.PlayPoleaxeAttackClip();
             }
 
@@ -125,7 +143,17 @@ namespace CodeBase.Knight
             {
                 _spineAnimationState.AddAnimation(0, _idleAnimationName, true, 0);
             }
+
+            _attackCoroutine = StartCoroutine(StopAttackAfterTime(attackEntry.AnimationEnd));
         }
+
+        private IEnumerator StopAttackAfterTime(float time)
+        {
+            yield return new WaitForSeconds(time);
+            _isAttacking = false;
+
+        }
+
         public void Turn()
         {
             _skeleton.ScaleX *= -1;
