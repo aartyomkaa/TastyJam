@@ -37,15 +37,17 @@ public class EnemiesSpawner : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "3")
         {
-            _enemiesCount = 10;
+            _enemiesCount = 14;
             _minGroupCount = 1;
-            _maxGroupCount = 2;
+            _maxGroupCount = 3;
         }
         else if (SceneManager.GetActiveScene().name == "4")
         {
-            _enemiesCount = 20;
-            _minGroupCount = 1;
-            _maxGroupCount = 3;
+            _enemiesCount = 30;
+            _minGroupCount = 2;
+            _maxGroupCount = 4;
+            _minSpawnDelay = 3;
+            _maxSpawnDelay = 5;
         }
 
         StartCoroutine(Spawning());
@@ -73,21 +75,24 @@ public class EnemiesSpawner : MonoBehaviour
             {
                 Vector2 position = _groupSpawnPos + new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f));
 
-                CreateEnemy(position);
+                Enemy enemy = CreateEnemy(position);
+                enemy.HasDied += OnEnemyDeath;
+
             }
             
             yield return new WaitForSeconds(Random.Range(_minSpawnDelay, _maxSpawnDelay));
         }
     }
     
-    private void CreateEnemy(Vector3 position)
+    private Enemy CreateEnemy(Vector3 position)
     {
         GameObject enemySpawn = Instantiate(_data.Prefab, new Vector2(position.x, position.y), Quaternion.identity);
 
         Enemy enemy = enemySpawn.GetComponent<Enemy>();
 
         enemy.Construct(_data, _knight);
-        enemy.HasDied += OnEnemyDeath;
+
+        return enemy;
     }
 
     private void OnEnemyDeath(Enemy enemy)
@@ -97,6 +102,7 @@ public class EnemiesSpawner : MonoBehaviour
         if (_enemiesCount == _enemiesDied)
             EndLevel?.Invoke();
         
+
         if (_enemiesDied % 2 == 0)
             _lootPool.SpwanThrowableObject(enemy.transform.position);
         
