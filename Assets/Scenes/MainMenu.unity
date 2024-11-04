@@ -2721,6 +2721,7 @@ GameObject:
   - component: {fileID: 1793478774}
   - component: {fileID: 1793478776}
   - component: {fileID: 1793478775}
+  - component: {fileID: 1793478777}
   m_Layer: 5
   m_Name: SettingsPanel
   m_TagString: Untagged
@@ -2790,6 +2791,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793478773}
   m_CullTransparentMesh: 1
+--- !u!114 &1793478777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793478773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6f920f05c3bf341851c388132f5e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mixerGroup: {fileID: 24300002, guid: fef6613c97ead8a4994ed0e813f84217, type: 2}
+  _music: {fileID: 1523759409}
+  _volume: {fileID: 2106217425}
 --- !u!1 &1795029430
 GameObject:
   m_ObjectHideFlags: 0
