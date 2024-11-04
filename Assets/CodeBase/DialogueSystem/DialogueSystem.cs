@@ -10,6 +10,8 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private Sprite[] _icons;
     [SerializeField] private int _flashBackStart;
     [SerializeField] private int _flashBackEnd;
+    [SerializeField] private float _typingDelay = 0.05f;
+    [Space]
     [Space]
     [SerializeField] private TextAsset _textAsset;
     [SerializeField] private Text _dialogueTitle;
@@ -57,7 +59,7 @@ public class DialogueSystem : MonoBehaviour
             for (int j = 0; j < _texts[i].Length; j++)
             {
                 _dialogueText.text = _dialogueText.text + _texts[i][j];
-                yield return new WaitForSeconds(_symbolsToDelay.Contains(_texts[i][j]) ? 0.5f : 0.05f);
+                yield return new WaitForSeconds(_symbolsToDelay.Contains(_texts[i][j]) ? _typingDelay * 10 : _typingDelay);
             }
             while (!Input.GetMouseButtonDown(0))
                 yield return null;
