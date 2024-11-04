@@ -19,7 +19,7 @@ MonoBehaviour:
   Damage: 1
   DamageRange: 1
   Speed: 2
-  Prefab: {fileID: 6123560694690102695, guid: 389650e1543aedb4fae2dce8d212fb2c, type: 3}
+  Prefab: {fileID: 6123560694690102695, guid: db9906c3d569b6744ae2ff23fd5b35c4, type: 3}
   KnightLayer:
     serializedVersion: 2
     m_Bits: 128

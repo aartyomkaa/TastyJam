@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: -4330963052762215914}
   - component: {fileID: -5953299911526444620}
   - component: {fileID: 6972628631388891087}
+  - component: {fileID: 6043353209942840566}
+  - component: {fileID: 5847203695250855900}
   m_Layer: 7
   m_Name: knight
   m_TagString: Untagged
@@ -159,6 +161,155 @@ MonoBehaviour:
   _meleeSkinName: mele
   _swordSkinName: sword
   _poleaxeSkinName: axe
+--- !u!114 &6043353209942840566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690634865653990598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88254281996fb8c4cb4e1baefe6819fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stepSounds:
+  - {fileID: 8300000, guid: 08e4eb2ae7649f14ea18f34a369a773c, type: 3}
+  - {fileID: 8300000, guid: 5abb05a8684c1f14ebd49c4d44c09874, type: 3}
+  - {fileID: 8300000, guid: f07902bf36db0944d923db10250dde6d, type: 3}
+  - {fileID: 8300000, guid: 40dfd7be3f9fa7d40b5dd563bf804c60, type: 3}
+  - {fileID: 8300000, guid: d7e474b6382e131449e6e0355dcc6627, type: 3}
+  - {fileID: 8300000, guid: b44b6692cdce49f4ca0c47b523afede6, type: 3}
+  - {fileID: 8300000, guid: 8e64402f321341b46ad8236ff9367648, type: 3}
+  - {fileID: 8300000, guid: cda1da5e1af52ce4c8e7087a810430ef, type: 3}
+  _meleeAttackSounds:
+  - {fileID: 8300000, guid: 85bac3ad1db47d5499b17662eeb11913, type: 3}
+  - {fileID: 8300000, guid: a6c71240c94abf644a7e64476285ff91, type: 3}
+  - {fileID: 8300000, guid: 942ec0fd004ecf04892b2df147690a96, type: 3}
+  - {fileID: 8300000, guid: db3cf0a8c2541464585953f55024e163, type: 3}
+  - {fileID: 8300000, guid: 1fe9a941a2557dc478b2386ae599e3be, type: 3}
+  - {fileID: 8300000, guid: ecc02dca3516ec44aabde6fbf83664fe, type: 3}
+  - {fileID: 8300000, guid: e0e8c623b5b7a3942ae5a33709836a9f, type: 3}
+  - {fileID: 8300000, guid: 8549eefd1112aa64080ea74bd7322fac, type: 3}
+  _swordAttackSounds:
+  - {fileID: 8300000, guid: e8dfdfd7d15086341a3eb81b63915ef6, type: 3}
+  - {fileID: 8300000, guid: 2ca658711685d8f45a8409ae8c81fa79, type: 3}
+  - {fileID: 8300000, guid: 280fede926a90a748836202f1774c26b, type: 3}
+  - {fileID: 8300000, guid: ee16b9eebc56cb940846c025f041d67e, type: 3}
+  - {fileID: 8300000, guid: 8fd3d36344b77624fa95b27bb02aea7c, type: 3}
+  - {fileID: 8300000, guid: 83e8ca7742378ab4b9d455cf3376cac1, type: 3}
+  - {fileID: 8300000, guid: e4a9d48e0194af44487a9c50f92f2a22, type: 3}
+  - {fileID: 8300000, guid: 3c9cbabc4cb6b644f8ad7a876e840ced, type: 3}
+  _poleaxeAttackSounds:
+  - {fileID: 8300000, guid: 028f106f6d495934a92e339e3d6a7462, type: 3}
+  - {fileID: 8300000, guid: b3688d17fe267bf4ab2739d56fd8b8b9, type: 3}
+  - {fileID: 8300000, guid: 087c357ef3f89364187010d454e9c14b, type: 3}
+  - {fileID: 8300000, guid: 260d814d553857f40a9966a9a3befc43, type: 3}
+  - {fileID: 8300000, guid: ffa59d7a8a0423c42a51e18d9a16627f, type: 3}
+  - {fileID: 8300000, guid: c5c4ed75c75563646a4ba4f7725d313a, type: 3}
+  - {fileID: 8300000, guid: ffd01a3580efa7646bc77d15de718a97, type: 3}
+  - {fileID: 8300000, guid: 6ab167156dbb0524dbd08b66f110de7b, type: 3}
+  _dieSounds:
+  - {fileID: 8300000, guid: cce62876a3aa9f74f87400a8024bc414, type: 3}
+  - {fileID: 8300000, guid: 5ade2d3c2f41a414c87e322d44d8b11d, type: 3}
+  - {fileID: 8300000, guid: bb358b8db49e52f4e9261eb0776307ce, type: 3}
+  - {fileID: 8300000, guid: 39b03baa61efb5a48bc128650e98feb8, type: 3}
+--- !u!82 &5847203695250855900
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690634865653990598}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -8541274443625135890, guid: fef6613c97ead8a4994ed0e813f84217, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8357147639755254392
 GameObject:
   m_ObjectHideFlags: 0
