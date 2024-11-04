@@ -1,3 +1,4 @@
+using CodeBase.Logic.Utilities;
 using UnityEngine;
 
 namespace CodeBase.Player
@@ -33,11 +34,5 @@ namespace CodeBase.Player
                 _animationController.Turn();
             }
         }
-    }
-
-    public enum HorizontalDirection
-    {
-        Left,
-        Right
     }
 }

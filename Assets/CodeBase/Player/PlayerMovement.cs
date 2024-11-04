@@ -38,9 +38,13 @@ namespace CodeBase.Player
             _playerWidth = playerSize.x;
             _playerHeight = playerSize.y;
 
+
+        }
+
+        private void Start()
+        {
             isRunning = false;
             _animationController.Idle();
-
         }
 
         private void LateUpdate()
