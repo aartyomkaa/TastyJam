@@ -253,7 +253,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &1433277785829220121
 MonoBehaviour:
@@ -397,6 +397,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c7ce04955c108134e961fd0ec02bee78, type: 2}
     - target: {fileID: 135667767003816957, guid: 11860d74ca90b5849b2988a26714ffcc, type: 3}
+      propertyPath: _attackCooldown
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 135667767003816957, guid: 11860d74ca90b5849b2988a26714ffcc, type: 3}
       propertyPath: _enemyMask.m_Bits
       value: 64
       objectReference: {fileID: 0}
@@ -509,6 +513,10 @@ PrefabInstance:
       propertyPath: _staticData
       value: 
       objectReference: {fileID: 11400000, guid: c7ce04955c108134e961fd0ec02bee78, type: 2}
+    - target: {fileID: -7732392518682962432, guid: 2c4f9a57f96714a44ac560320f1dcf16, type: 3}
+      propertyPath: _attackCooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -7732392518682962432, guid: 2c4f9a57f96714a44ac560320f1dcf16, type: 3}
       propertyPath: _enemyMask.m_Bits
       value: 64

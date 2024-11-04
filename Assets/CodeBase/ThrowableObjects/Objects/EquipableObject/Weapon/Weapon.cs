@@ -19,6 +19,8 @@ namespace CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon
 
         public float CurrentDurability { get; set; }
         public float MaxDurability => _durability;
+        public bool IsOnCooldown => _isOnCooldown;
+        
 
         internal abstract Collider2D[] FindTargets(Vector2 attackerPosition, Vector2 attackDirection, LayerMask mask);
 
@@ -27,18 +29,14 @@ namespace CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon
             CurrentDurability -= _durabilityChangeStep;
             if (CurrentDurability <= 0)
             {
-                Debug.Log("weapon broken");
+                _isOnCooldown = false;
             }
         }
 
         public void Attack(Vector2 attackerPosition, Vector2 attackDirection)
         {
-            Debug.Log(_isOnCooldown);
-            
             if (_isOnCooldown)
                 return;
-
-            Debug.Log("attack");
             
             _hitColliders = FindTargets(attackerPosition, attackDirection, _enemyMask);
 

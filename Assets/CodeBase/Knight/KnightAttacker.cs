@@ -21,6 +21,9 @@ namespace CodeBase.Knight
 
         public void Attack(Transform target)
         {
+            if (_currentWeapon.IsOnCooldown)
+                return;
+            
             if (_currentWeapon.CurrentDurability == 0)
                 EquipFists();
             
@@ -43,9 +46,6 @@ namespace CodeBase.Knight
 
         public void Equip(Weapon weapon)
         {
-            Debug.Log("equping");
-            Debug.Log(weapon.GetType());
-            
             _currentWeapon.gameObject.SetActive(false);
             
             foreach (var stashed in _weapons)
@@ -66,8 +66,6 @@ namespace CodeBase.Knight
                     }
                 }
             }
-            
-            Debug.Log(_currentWeapon);
         }
 
         private void EquipFists()

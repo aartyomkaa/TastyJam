@@ -37,7 +37,7 @@ namespace CodeBase.Knight
         public void TakeDamage(float damage)
         {
             Current -= damage;
-            _animationsController.TakeDamage();
+           // _animationsController.TakeDamage();
 
             if (Current <= 0)
                 Die();

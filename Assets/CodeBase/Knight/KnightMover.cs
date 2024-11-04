@@ -20,12 +20,12 @@ namespace CodeBase.Knight
             if (moveDirection.x > 0 && _horizontalDirection != HorizontalDirection.Right)
             {
                 _horizontalDirection = HorizontalDirection.Right;
-                _animator.Turn();
+                //_animator.Turn();
             }
             else if (moveDirection.x < 0 && _horizontalDirection != HorizontalDirection.Left)
             {
                 _horizontalDirection = HorizontalDirection.Left;
-                _animator.Turn();
+                //_animator.Turn();
             }
             
             _animator.Run();

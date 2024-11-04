@@ -29,12 +29,12 @@ public class EnemyMover : MonoBehaviour
         if (vectorToKnight.x > 0 && _horizontalDirection != HorizontalDirection.Right)
         {
             _horizontalDirection = HorizontalDirection.Right;
-            _enemyAnimationsController.Turn();
+            //_enemyAnimationsController.Turn();
         }
         else if (vectorToKnight.x < 0 && _horizontalDirection != HorizontalDirection.Left)
         {
             _horizontalDirection = HorizontalDirection.Left;
-            _enemyAnimationsController.Turn();
+           // _enemyAnimationsController.Turn();
         }
 
 
