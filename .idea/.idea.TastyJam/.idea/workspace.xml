@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65fbf09f-26ec-4b24-a77d-9ea3db294dd9" name="Changes" comment="" />
+    <list default="true" id="65fbf09f-26ec-4b24-a77d-9ea3db294dd9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/StaticData/Knight/KnightData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/StaticData/Knight/KnightData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/StaticData/Monsters/EnemyBase.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/StaticData/Monsters/EnemyBase.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FinalLevels/TestLevel1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FinalLevels/TestLevel1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UISample/ScreenFade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UISample/ScreenFade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

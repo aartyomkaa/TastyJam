@@ -15,7 +15,7 @@ MonoBehaviour:
   Hp: 100
   Damage: 20
   MoveSpeed: 2
-  AggroRange: 30
+  AggroRange: 50
   AttackRange: 10
   PickUpRange: 5
   Enemy:
