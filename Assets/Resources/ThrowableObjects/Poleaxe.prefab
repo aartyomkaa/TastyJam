@@ -76,8 +76,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1866420357131835993, guid: 7d4db60581f8575449b84d95a11266b6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ef6d62df35b78234e969bf2b2ca9d16a, type: 3}
+    - target: {fileID: 1866420357131835993, guid: 7d4db60581f8575449b84d95a11266b6, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1866420357131835993, guid: 7d4db60581f8575449b84d95a11266b6, type: 3}
       propertyPath: m_Color.g
@@ -85,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1866420357131835993, guid: 7d4db60581f8575449b84d95a11266b6, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3478048240242019908, guid: 7d4db60581f8575449b84d95a11266b6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -130,6 +134,14 @@ PrefabInstance:
     - target: {fileID: 3888968798785763271, guid: 7d4db60581f8575449b84d95a11266b6, type: 3}
       propertyPath: m_Name
       value: Poleaxe
+      objectReference: {fileID: 0}
+    - target: {fileID: 7075843327162101546, guid: 7d4db60581f8575449b84d95a11266b6, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7075843327162101546, guid: 7d4db60581f8575449b84d95a11266b6, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
