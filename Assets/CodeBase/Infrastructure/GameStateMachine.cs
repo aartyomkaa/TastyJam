@@ -22,7 +22,7 @@ namespace CodeBase.Infrastructure
                     loadingCurtain: curtain,
                     services.Single<IGameFactory>(),
                     services.Single<IStaticDataService>()),
-                [typeof(GameLoopState)] = new GameLoopState(this),
+                [typeof(GameLoopState)] = new GameLoopState(this, sceneLoader),
             };
         }
 

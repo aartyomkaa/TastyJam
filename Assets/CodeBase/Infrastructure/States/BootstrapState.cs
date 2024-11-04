@@ -9,7 +9,7 @@ namespace CodeBase.Infrastructure.States
 {
     public class BootstrapState : IState
     {
-        private const string Level1 = "Level1";
+        private const string Menu = "MainMenu";
 
         private GameStateMachine _stateMachine;
         private AllServices _services;

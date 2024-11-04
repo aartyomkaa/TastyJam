@@ -5,19 +5,26 @@ using UnityEngine.UI;
 
 public class DialogueSystem : MonoBehaviour
 {
+    [SerializeField] private int _dialogueNum;
     [SerializeField] private string[] _names;
     [SerializeField] private string[] _texts;
     [SerializeField] private Sprite[] _icons;
     [SerializeField] private int _flashBackStart;
     [SerializeField] private int _flashBackEnd;
     [SerializeField] private float _typingDelay = 0.05f;
+
     [Space]
     [Space]
     [SerializeField] private TextAsset _textAsset;
+
     [SerializeField] private Text _dialogueTitle;
     [SerializeField] private Text _dialogueText;
     [SerializeField] private Image _dialogueIcon;
+
     [SerializeField] private Image _flashbackImage;
+
+    [SerializeField] private SceneLoader _sceneLoader;
+
     //private DialogueLoader _loader;
     //private Dialogue _dialogue;
     private string _symbolsToDelay = ".?!";
@@ -33,7 +40,7 @@ public class DialogueSystem : MonoBehaviour
         //_dialogue = ScriptableObject.CreateInstance<Dialogue>();
         //_dialogue.Prases = new List<Phrase>();
         //Phrase _phrase1 = ScriptableObject.CreateInstance<Phrase>();
-        //_phrase1.Name = "Тристан";
+        //_phrase1.Name = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
         //_phrase1.Text = "Hello World! Heh";
         //_phrase1.IconPath = "mutantExample";
         //_dialogue.Prases.Add(_phrase1);
@@ -64,5 +71,7 @@ public class DialogueSystem : MonoBehaviour
             while (!Input.GetMouseButtonDown(0))
                 yield return null;
         }
+        
+        _sceneLoader.SceneChange(_dialogueNum + 1);
     }
 }
