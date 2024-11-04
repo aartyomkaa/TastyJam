@@ -45,9 +45,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6de096e82ffc4bae369a0cb4c2fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _staticData: {fileID: 11400000, guid: c7ce04955c108134e961fd0ec02bee78, type: 2}
+  _state: 1
+  _isOnKnight: 0
   _attackArea: {fileID: 6772862711763674382}
   _damage: 5
   _durability: 0
+  _attackCooldown: 1
+  _enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &7252991718720486203
 GameObject:
   m_ObjectHideFlags: 0

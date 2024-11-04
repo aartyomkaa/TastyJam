@@ -29,18 +29,17 @@ namespace CodeBase.Infrastructure.Factory
         {
             KnightStaticData knightData = _staticData.ForKnight();
             GameObject knight = _assets.InstantiateAt(AssetPath.Knight, at.transform.position);
-
+            
             KnightMover mover = knight.GetComponent<KnightMover>();
-            KnightAttacker attacker = knight.GetComponent<KnightAttacker>();
             
             KnightStateMachine knightStateMachine = new KnightStateMachine(
-                knight.GetComponent<Animator>(),
                 mover,
                 knight.GetComponent<KnightAttacker>(),
-                knightData);
+                knightData,
+                knight.GetComponent<KnightAnimationsController>());
             
             mover.Construct(knightData.MoveSpeed);
-            attacker.Construct(knightData.Damage, knightData.AttackRadius, knightData.AttackCooldown, knightData.Enemy);
+            knight.GetComponentInChildren<KnightPickupObjects>().Construct(knightData.PickUpRange);
             knight.GetComponent<KnightDefender>().Construct(knightStateMachine, knightData.Hp);
             
             return knight;

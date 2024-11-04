@@ -22,9 +22,9 @@ public class EnemyMover : MonoBehaviour
 
     public void Move(Transform target)
     {
-        Vector3 vectorToKnight = target.transform.position - transform.position;
+        Vector2 vectorToKnight = target.transform.position - transform.position;
         
-        transform.Translate(vectorToKnight * Time.deltaTime);
+        transform.position = Vector2.Lerp(transform.position, target.position, _moveSpeed * Time.deltaTime);
 
         if (vectorToKnight.x > 0 && _horizontalDirection != HorizontalDirection.Right)
         {
@@ -36,7 +36,5 @@ public class EnemyMover : MonoBehaviour
             _horizontalDirection = HorizontalDirection.Left;
             _enemyAnimationsController.Turn();
         }
-
-
     }
 }

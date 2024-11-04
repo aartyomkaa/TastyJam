@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CodeBase.Infrastructure.Services;
+using CodeBase.ThrowableObjects;
 using UnityEngine;
 
 namespace CodeBase.StaticData
@@ -9,6 +10,7 @@ namespace CodeBase.StaticData
     {
         private Dictionary<EnemyTypeID, EnemyStaticData> _monsters;
         private Dictionary<string, LevelStaticData> _levels;
+        private List<ThrowableObject> _loot;
 
         public void LoadMonsters()
         {

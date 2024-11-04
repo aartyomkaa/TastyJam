@@ -5,52 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65fbf09f-26ec-4b24-a77d-9ea3db294dd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Controller/Enemy.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/CodeBase/StaticData/EnemyStaticData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TastyJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TastyJam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Controller/EnemyController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Controller/EnemyController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Controller/Enemy.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Controller/EnemyMeleeAttacker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Controller/EnemyAttacker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Controller/EnemyMeleeAttacker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Controller/EnemyAttacker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Controller/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Controller/Enemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Controller/EnemyMover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Controller/EnemyMover.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Controller/MeleeEnemyController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Controller/MeleeEnemyController.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Prefs/СommonMeleeEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Prefs/СommonMeleeEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Scriptable.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Scriptable/CommonMeleeEnemy.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Scriptable/CommonMeleeEnemy.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Scriptable/MeleeEnemy.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Scriptable/MeleeEnemy.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/StaticData/EnemyStaticData.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Spawner/EnemiesSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/EnemiesScripts/Spawner/EnemiesSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/AssetManagment/AssetPath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/AssetManagment/AssetPath.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Factory/GameFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Factory/GameFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Factory/IGameFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Factory/IGameFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Services/IStaticDataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Services/IStaticDataService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/States/BootstrapState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/States/BootstrapState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/States/LoadLevelState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/States/LoadLevelState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/StaticData.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/StaticData/ThrowableObjectStaticData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Infrastructure/StaticData/ThrowableObjectStaticData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightAnimationsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightAnimationsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightAttacker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightAttacker.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightDefender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightDefender.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightFSM/FSMStateAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightFSM/FSMStateAttack.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightFSM/FSMStateChaseEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightFSM/FSMStateChaseEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightFSM/FSMStateIdle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightFSM/FSMStateIdle.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightFSM/KnightStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightFSM/KnightStateMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightMover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightMover.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/StaticData/DisappearableObjectStaticData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/StaticData/DisappearableObjectStaticData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/StaticData/KnightStaticData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/StaticData/KnightStaticData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/StaticData/MonsterStaticData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/StaticData/MonsterStaticData.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/StaticData/MonsterTypeID.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/StaticData/EnemyTypeID.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/StaticData/MonsterTypeID.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/StaticData/EnemyTypeID.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/StaticData/StaticDataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/StaticData/StaticDataService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/StaticData/ThrowableObjectStaticData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/StaticData/ThrowableObjectStaticData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/ThrowableObjects/DisappearableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/ThrowableObjects/DisappearableObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Hero/hero.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Hero/hero.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightPickupObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Knight/KnightPickupObjects.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/ThrowableObjects/Objects/EquipableObject/Weapon/Fists.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/ThrowableObjects/Objects/EquipableObject/Weapon/Fists.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/ThrowableObjects/Objects/EquipableObject/Weapon/Poleaxe.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/ThrowableObjects/Objects/EquipableObject/Weapon/Poleaxe.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/ThrowableObjects/Objects/EquipableObject/Weapon/Sword.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/ThrowableObjects/Objects/EquipableObject/Weapon/Sword.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/ThrowableObjects/Objects/EquipableObject/Weapon/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/ThrowableObjects/Objects/EquipableObject/Weapon/Weapon.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Knight/knight.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Knight/knight.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ThrowableObjects/Poleaxe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ThrowableObjects/Poleaxe.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

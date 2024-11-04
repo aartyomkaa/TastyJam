@@ -1,7 +1,12 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.StaticData;
+using CodeBase.ThrowableObjects;
+using CodeBase.ThrowableObjects.Pool;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemiesSpawner : MonoBehaviour
 {
@@ -11,9 +16,15 @@ public class EnemiesSpawner : MonoBehaviour
     [SerializeField] private float _minSpawnDelay = 7;
     [SerializeField] private float _maxSpawnDelay = 7;
     [SerializeField] private float _randomRange = 0.1f;
+    [SerializeField] private ThrowableObjectPool _lootPool;
+
+    private int _enemiesDied;
     
     private Transform _knight;
     private EnemyStaticData _data;
+    private List<ThrowableObject> _possibleLoot;
+
+    public event Action EndLevel;
 
     public void Construct(Transform knight, EnemyStaticData enemyData)
     {
@@ -57,9 +68,25 @@ public class EnemiesSpawner : MonoBehaviour
     
     private void CreateEnemy(Vector3 position)
     {
-        GameObject enemy = Instantiate(_data.Prefab, position, Quaternion.identity);
-                
-        enemy.GetComponent<Enemy>().Construct(_data, _knight);
+        GameObject enemySpawn = Instantiate(_data.Prefab, new Vector2(position.x, position.y), Quaternion.identity);
+
+        Enemy enemy = enemySpawn.GetComponent<Enemy>();
+
+        enemy.Construct(_data, _knight);
+        enemy.HasDied += OnEnemyDeath;
+    }
+
+    private void OnEnemyDeath(Enemy enemy)
+    {
+        _enemiesDied += 1;
+
+        if (_enemiesCount == _enemiesDied)
+            EndLevel?.Invoke();
+        
+        if (_enemiesDied % 2 == 0)
+            _lootPool.SpwanThrowableObject(enemy.transform.position);
+        
+        enemy.HasDied -= OnEnemyDeath;
     }
 
     private float GetXPosition(bool isIncrease, bool isHalf)

@@ -59,10 +59,10 @@ CircleCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -72,9 +72,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 3}
+  m_Offset: {x: 0, y: 5.563487}
   serializedVersion: 2
-  m_Radius: 3.5
+  m_Radius: 8.348693
 --- !u!50 &8890938104976360681
 Rigidbody2D:
   serializedVersion: 4
@@ -274,7 +274,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &7170792407642284693
 MonoBehaviour:

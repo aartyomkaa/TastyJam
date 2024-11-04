@@ -11,16 +11,19 @@ namespace CodeBase.Knight.KnightFSM
         private readonly KnightStateMachine _knightStateMachine;
         private readonly KnightMover _movement;
         private ClosestTargetFinder _targetFinder;
-        
-        public FSMStateIdle(KnightStateMachine knightStateMachine, KnightMover movement, KnightStaticData data)
+        private readonly KnightAnimationsController _animator;
+
+        public FSMStateIdle(KnightStateMachine knightStateMachine, KnightMover movement, KnightStaticData data, KnightAnimationsController animator)
         {
             _knightStateMachine = knightStateMachine;
             _movement = movement;
             _targetFinder = new ClosestTargetFinder(data.AggroRange, data.Enemy);
+            _animator = animator;
         }
 
         public void Enter()
         {
+            _animator.Idle();
         }
 
         public void Update()

@@ -134,16 +134,17 @@ namespace CodeBase.Knight
         public void SetMeleeSkin()
         {
             _skeleton.SetSkin(_meleeSkinName);
+            _skeleton.SetSlotsToSetupPose();
         }
         public void SetSwordSkin()
         {
             _skeleton.SetSkin(_swordSkinName);
+            _skeleton.SetSlotsToSetupPose();
         }
         public void SetPoleaxeSkin()
         {
             _skeleton.SetSkin(_poleaxeSkinName);
+            _skeleton.SetSlotsToSetupPose();
         }
-
-
     }
 }

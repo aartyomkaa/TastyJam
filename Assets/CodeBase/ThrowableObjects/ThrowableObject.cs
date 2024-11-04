@@ -1,14 +1,16 @@
-using CodeBase.StaticData;
 using System.Collections;
+using CodeBase.StaticData;
+using CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon;
 using UnityEngine;
 
 namespace CodeBase.ThrowableObjects
 {
-    public class ThrowableObject : MonoBehaviour
+    public class ThrowableObject : MonoBehaviour, IEquippableObject
     {
         [SerializeField] private ThrowableObjectStaticData _staticData;
 
-        private ThrowableObjectState _state;
+        [SerializeField] private ThrowableObjectState _state;
+        [SerializeField] private bool _isOnKnight;
 
         private Vector3 _targetDirection;
         private Vector3 _targetPoint;
@@ -17,22 +19,25 @@ namespace CodeBase.ThrowableObjects
 
         private float _idleTime;
 
+        public ThrowableObjectState State => _state;
 
         public bool CanBePickedUp => _state == ThrowableObjectState.Idle || _state == ThrowableObjectState.Disappearing;
 
         private void Awake()
         {
             _disappear = GetComponent<DisappearableObject>();
-            _state = ThrowableObjectState.Idle;
 
         }
 
         private void OnEnable()
         {
-            if (_state != ThrowableObjectState.PickedUp)
+            if (_isOnKnight)
             {
-                _state = ThrowableObjectState.Idle;
+                _state = ThrowableObjectState.Weapon;
+                return;
             }
+            
+            _state = ThrowableObjectState.Idle;
         }
 
         private void Update()
@@ -55,8 +60,7 @@ namespace CodeBase.ThrowableObjects
             {
                 if (Vector3.Distance(transform.position, _targetPoint) > _staticData.DistanceEpsilon)
                 {
-                    Vector3 newPos = Vector3.Lerp(transform.position, _targetPoint, _staticData.Speed * Time.deltaTime);
-                    transform.position = newPos;
+                    Move(_targetPoint);
                 }
                 else
                 {
@@ -84,6 +88,19 @@ namespace CodeBase.ThrowableObjects
             }
 
             _state = ThrowableObjectState.PickedUp;
+        }
+
+        public void Equip(Vector3 position)
+        {
+            _state = ThrowableObjectState.Disappearing;
+            _disappear.StartDisappear();
+            Move(position);
+        }
+
+        private void Move(Vector3 position)
+        {
+            Vector3 newPos = Vector3.Lerp(transform.position, position, _staticData.Speed * Time.deltaTime);
+            transform.position = newPos;
         }
     }
 }

@@ -8,11 +8,11 @@ namespace CodeBase.Knight.KnightFSM
     {
         private readonly KnightStateMachine _knightStateMachine;
         private readonly KnightAttacker _attacker;
-        private readonly Animator _animator;
+        private readonly KnightAnimationsController _animator;
         private readonly KnightStaticData _data;
         private float _distance;
 
-        public FSMStateAttack(KnightStateMachine knightStateMachine, KnightAttacker attacker, Animator animator, KnightStaticData data)
+        public FSMStateAttack(KnightStateMachine knightStateMachine, KnightAttacker attacker, KnightAnimationsController animator, KnightStaticData data)
         {
             _knightStateMachine = knightStateMachine;
             _attacker = attacker;
@@ -22,23 +22,25 @@ namespace CodeBase.Knight.KnightFSM
 
         public void Enter()
         {
+            _animator.Idle();
         }
 
         public void Update()
         {
-                if (NeedChaseEnemy())
-                {
-                    _knightStateMachine.SetState<FSMStateChaseEnemy>();
-                }
-                else
-                {
-                    _attacker.Attack();
-                }
+            if (_knightStateMachine.Target == null)
+                return;
             
-            if (_knightStateMachine.Target.Transform.gameObject.activeSelf == false)
+            if (NeedChaseEnemy())
             {
-                _knightStateMachine.SetState<FSMStateIdle>();
+                _knightStateMachine.SetState<FSMStateChaseEnemy>();
             }
+            else
+            {
+                _attacker.Attack(_knightStateMachine.Target.Transform);
+            }
+            
+            if (_knightStateMachine.Target.Transform.gameObject.activeSelf == false) 
+                _knightStateMachine.SetState<FSMStateIdle>();
         }
 
         public void Exit()

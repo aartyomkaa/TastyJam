@@ -1,6 +1,7 @@
 ﻿using System;
 using CodeBase.Knight.KnightFSM;
 using CodeBase.Logic;
+using CodeBase.Logic.Utilities;
 using UnityEngine;
 
 namespace CodeBase.Knight
@@ -8,7 +9,8 @@ namespace CodeBase.Knight
     public class KnightDefender : MonoBehaviour, IHealth
     {
         private KnightStateMachine _stateMachine;
-        private KnightAnimationsController _animationsController;
+        private KnightAnimationsController _animator;
+        private HorizontalDirection _horizontalDirection;
 
         public float Current { get; set; }
         public float Max { get; set; }
@@ -22,22 +24,39 @@ namespace CodeBase.Knight
 
             Max = health;
             Current = Max;
+            _horizontalDirection = HorizontalDirection.Right;
         }
 
         private void Awake()
         {
-            _animationsController = GetComponentInChildren<KnightAnimationsController>();
+            _animator = GetComponentInChildren<KnightAnimationsController>();
         }
 
         private void Update()
         {
             _stateMachine.Update();
+
+            Vector3 direction = Vector3.zero;
+            
+            if (_stateMachine.Target != null)
+                direction = _stateMachine.Target.Transform.position - transform.position;
+            
+            if (direction.x > 0 && _horizontalDirection != HorizontalDirection.Right)
+            {
+                _horizontalDirection = HorizontalDirection.Right;
+                _animator.Turn();
+            }
+            else if (direction.x < 0 && _horizontalDirection != HorizontalDirection.Left)
+            {
+                _horizontalDirection = HorizontalDirection.Left;
+                _animator.Turn();
+            }
         }
         
         public void TakeDamage(float damage)
         {
             Current -= damage;
-            _animationsController.TakeDamage();
+            _animator.TakeDamage();
 
             if (Current <= 0)
                 Die();
@@ -45,7 +64,7 @@ namespace CodeBase.Knight
 
         private void Die()
         {
-            _animationsController.Die();
+            _animator.Die();
             Destroy(gameObject);
         }
     }
