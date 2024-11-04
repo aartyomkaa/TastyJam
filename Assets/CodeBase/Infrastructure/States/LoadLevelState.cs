@@ -55,7 +55,7 @@ namespace CodeBase.Infrastructure.States
             GameObject hero = _gameFactory.CreateHero(GameObject.FindGameObjectWithTag(HeroSpawnTag));
             GameObject knight = _gameFactory.CreateKnight(GameObject.FindGameObjectWithTag(KnightSpawnTag));
 
-            //InitHud(hero);
+            InitHud(hero);
             CameraFollow(knight);
             InitSpawners(knight);
         }

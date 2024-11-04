@@ -57,6 +57,7 @@ namespace CodeBase.Knight
         {
             Current -= damage;
             _animator.TakeDamage();
+            HealthChanged?.Invoke();
 
             if (Current <= 0)
                 Die();
