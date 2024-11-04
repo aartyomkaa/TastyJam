@@ -7,8 +7,6 @@ namespace CodeBase.Knight
     public class KnightMover : MonoBehaviour
     {
         private float _moveSpeed;
-        private Coroutine _moveCoroutine;
-        private Rigidbody2D _rb;
         private SpriteRenderer _spriteRenderer;
 
         public void Construct(float moveSpeed) => 
@@ -16,15 +14,17 @@ namespace CodeBase.Knight
 
         private void Awake()
         {
-            _rb = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         public void Move(Transform target)
         {
-            Vector3 vectorToKnight = target.transform.position - transform.position;
+            
+            transform.position = Vector3.Lerp(transform.position, target.position, _moveSpeed * Time.deltaTime);
+            
+            //Vector3 vectorToKnight = target.transform.position - transform.position;
         
-            transform.Translate(vectorToKnight * (_moveSpeed * Time.deltaTime));
+            //transform.Translate(vectorToKnight * (_moveSpeed * Time.deltaTime));
         }
     }
 }

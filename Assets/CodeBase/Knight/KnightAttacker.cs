@@ -1,60 +1,62 @@
-﻿using System.Collections;
-using CodeBase.Logic;
+﻿using System.Collections.Generic;
+using CodeBase.ThrowableObjects.Objects.EquipableObject.Weapon;
 using UnityEngine;
 
 namespace CodeBase.Knight
 {
     public class KnightAttacker : MonoBehaviour
     {
-        private KnightAnimationsController _animationsController;
-        private bool _isOnCooldown = false;
-        private float _attackCooldown;
-        private float _damage;
-        private float _radius;
-        private LayerMask _mask;
-        private Collider2D[] _hitColliders;
+        [SerializeField] private List<Weapon> _weapons;
 
-        public void Construct(float damage, float radius, float attackCooldown, LayerMask mask)
-        {
-            _damage = damage;
-            _radius = radius;
-            _attackCooldown = attackCooldown;
-            _mask = mask;
-        }
+        private Weapon _currentWeapon;
 
         private void Awake()
         {
-            _animationsController = GetComponentInChildren<KnightAnimationsController>();
+            EquipFists();
         }
 
-        public void Attack()
+        public void Attack(Transform target)
         {
-            if (_isOnCooldown)
-                return;
+            if (_currentWeapon.CurrentDurability == 0)
+                EquipFists();
             
-            _hitColliders = Physics2D.OverlapCircleAll(transform.position, _radius, _mask);
+            Vector2 attackDirection = Vector2.right;
+
+            if (target.position.x < transform.position.x)
+                attackDirection = Vector2.left;
             
-            if (_hitColliders.Length > 0)
+            _currentWeapon.Attack(transform.position, attackDirection);
+        }
+
+        public void Equip(Weapon weapon)
+        {
+            Debug.Log("equping");
+            
+            _currentWeapon.gameObject.SetActive(false);
+            
+            foreach (var stashed in _weapons)
             {
-                foreach (var hit in _hitColliders)
+                if (stashed == weapon)
                 {
-                    hit.TryGetComponent<IHealth>(out IHealth enemy);
-            
-                    enemy.TakeDamage(_damage);
+                    _currentWeapon = stashed;
+                    _currentWeapon.gameObject.SetActive(true);
+                    _currentWeapon.CurrentDurability = _currentWeapon.MaxDurability;
                 }
-
-                _animationsController.Attack();
-                StartCoroutine(AttackCoroutine());
             }
+            
+            Debug.Log(_currentWeapon);
         }
 
-        private IEnumerator AttackCoroutine()
+        private void EquipFists()
         {
-            _isOnCooldown = true;
-
-            yield return new WaitForSeconds(_attackCooldown);
-
-            _isOnCooldown = false;
+            foreach (var weapon in _weapons)
+            {
+                if (weapon is Fists)
+                {
+                    _currentWeapon = weapon;
+                    _currentWeapon.gameObject.SetActive(true);
+                }
+            }
         }
     }
 }

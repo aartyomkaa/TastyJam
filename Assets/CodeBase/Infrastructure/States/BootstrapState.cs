@@ -2,6 +2,7 @@ using CodeBase.Infrastructure.AssetManagment;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Services;
 using CodeBase.StaticData;
+using CodeBase.ThrowableObjects.Pool;
 using UnityEngine.SceneManagement;
 
 namespace CodeBase.Infrastructure.States
@@ -36,7 +37,9 @@ namespace CodeBase.Infrastructure.States
             RegisterStaticData();
             
             _services.RegisterSingle<IAssets>(new AssetsProvider());
-            _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssets>(), _services.Single<IStaticDataService>()));
+            _services.RegisterSingle<IGameFactory>(new GameFactory(
+                _services.Single<IAssets>(),
+                _services.Single<IStaticDataService>()));
         }
 
         private void RegisterStaticData()

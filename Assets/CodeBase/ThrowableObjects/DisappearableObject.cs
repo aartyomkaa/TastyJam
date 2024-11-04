@@ -49,7 +49,7 @@ namespace CodeBase.ThrowableObjects
             }
 
             _spriteRenderer.color = _originColor;
-
+            
             ThrowableObjectPool.ReturnObjectToPool(gameObject);
         }
     }
