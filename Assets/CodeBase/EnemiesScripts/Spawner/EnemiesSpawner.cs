@@ -46,7 +46,7 @@ public class EnemiesSpawner : MonoBehaviour
             
             for (int i = _enemiesInGroup; i > 0; i--)
             {
-                Vector2 position = _groupSpawnPos + new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+                Vector2 position = _groupSpawnPos + new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f));
 
                 CreateEnemy(position);
             }
@@ -64,7 +64,7 @@ public class EnemiesSpawner : MonoBehaviour
 
     private float GetXPosition(bool isIncrease, bool isHalf)
     {
-        float _xPosToSpawn = isIncrease ? (isHalf ? 1.2f + Random.Range(0, _randomRange) : -0.2f - Random.Range(0, _randomRange)) 
+        float _xPosToSpawn = isIncrease ? (isHalf ? 10f + Random.Range(0, _randomRange) : -10f - Random.Range(0, _randomRange)) 
             : Random.Range(0 - _randomRange, 1 + _randomRange);
 
         return _xPosToSpawn;
@@ -73,7 +73,7 @@ public class EnemiesSpawner : MonoBehaviour
     private float GetYPosition(bool isIncrease, bool isHalf)
     {
         float _yPosToSpawn = isIncrease  ? Random.Range(0 - _randomRange, 1 + _randomRange)
-            : (isHalf ? 1.2f + Random.Range(0, _randomRange) : -0.2f - Random.Range(0, _randomRange));
+            : (isHalf ? 10f + Random.Range(0, _randomRange) : -10f - Random.Range(0, _randomRange));
 
         return _yPosToSpawn;
     }

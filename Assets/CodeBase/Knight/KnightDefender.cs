@@ -8,6 +8,8 @@ namespace CodeBase.Knight
     public class KnightDefender : MonoBehaviour, IHealth
     {
         private KnightStateMachine _stateMachine;
+        private KnightAnimationsController _animationsController;
+
         public float Current { get; set; }
         public float Max { get; set; }
         public Transform Transform => transform;
@@ -22,6 +24,11 @@ namespace CodeBase.Knight
             Current = Max;
         }
 
+        private void Awake()
+        {
+            _animationsController = GetComponentInChildren<KnightAnimationsController>();
+        }
+
         private void Update()
         {
             _stateMachine.Update();
@@ -30,6 +37,7 @@ namespace CodeBase.Knight
         public void TakeDamage(float damage)
         {
             Current -= damage;
+            _animationsController.TakeDamage();
 
             if (Current <= 0)
                 Die();
@@ -37,6 +45,7 @@ namespace CodeBase.Knight
 
         private void Die()
         {
+            _animationsController.Die();
             Destroy(gameObject);
         }
     }

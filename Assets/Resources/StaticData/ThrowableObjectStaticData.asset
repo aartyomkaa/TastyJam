@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e5f386de99473647abfa1107d676ed2, type: 3}
+  m_Script: {fileID: 11500000, guid: 303e441bf19f87e4390126cf6bce041f, type: 3}
   m_Name: ThrowableObjectStaticData
   m_EditorClassIdentifier: 
-  Speed: 10
-  MaxDistance: 6
-  DistanceEpsilon: 0.1
-  TimeToDisappear: 4
+  Speed: 5
+  MaxDistance: 30
+  DistanceEpsilon: 1
+  TimeToDisappear: 10

@@ -31,6 +31,6 @@ namespace CodeBase.StaticData
             _monsters.TryGetValue(typeID, out EnemyStaticData data) ? data : null;
         
         public LevelStaticData ForLevel(string sceneKey) => 
-            _levels.TryGetValue(sceneKey, out LevelStaticData data) ? data : null;
+            _levels.TryGetValue(sceneKey, out LevelStaticData data) ? data : null;  
     }
 }

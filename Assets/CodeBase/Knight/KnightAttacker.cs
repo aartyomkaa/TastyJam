@@ -6,6 +6,7 @@ namespace CodeBase.Knight
 {
     public class KnightAttacker : MonoBehaviour
     {
+        private KnightAnimationsController _animationsController;
         private bool _isOnCooldown = false;
         private float _attackCooldown;
         private float _damage;
@@ -19,6 +20,11 @@ namespace CodeBase.Knight
             _radius = radius;
             _attackCooldown = attackCooldown;
             _mask = mask;
+        }
+
+        private void Awake()
+        {
+            _animationsController = GetComponentInChildren<KnightAnimationsController>();
         }
 
         public void Attack()
@@ -36,7 +42,8 @@ namespace CodeBase.Knight
             
                     enemy.TakeDamage(_damage);
                 }
-                
+
+                _animationsController.Attack();
                 StartCoroutine(AttackCoroutine());
             }
         }

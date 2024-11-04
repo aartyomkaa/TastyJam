@@ -11,6 +11,12 @@ namespace CodeBase.EnemiesScripts.Controller
         private float _radius;
         private LayerMask _layer;
         private bool _isOnCooldown = false;
+        private EnemyAnimationsController _enemyAnimationsController;
+
+        private void Awake()
+        {
+            _enemyAnimationsController = GetComponent<EnemyAnimationsController>();
+        }
 
         public void Construct(float damage, float attackCooldown, float attackRadius, LayerMask knightLayer)
         {
@@ -33,6 +39,7 @@ namespace CodeBase.EnemiesScripts.Controller
             
                 knight.TakeDamage(_damage);
 
+                _enemyAnimationsController.Attack();
                 StartCoroutine(AttackCoroutine());
             }
         }

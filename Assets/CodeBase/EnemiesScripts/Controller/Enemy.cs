@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour, IHealth
     private EnemyAttacker _enemyAttacker;
     private Transform _knight;
     private EnemyStaticData _data;
+    private EnemyAnimationsController _enemyAnimationsController;
     private float _health;
     
     public event Action HealthChanged;
@@ -25,7 +26,9 @@ public class Enemy : MonoBehaviour, IHealth
 
         _enemyMover = GetComponent<EnemyMover>();
         _enemyAttacker = GetComponent<EnemyAttacker>();
-        
+
+        _enemyAnimationsController = GetComponent<EnemyAnimationsController>();
+
         _enemyMover.Construct(_data.Speed);
         _enemyAttacker.Construct(_data.Damage, _data.AttackCooldown, _data.DamageRange, _data.KnightLayer);
     }
@@ -45,6 +48,7 @@ public class Enemy : MonoBehaviour, IHealth
     public void TakeDamage(float damage)
     {
         _health -= damage;
+        _enemyAnimationsController.TakeDamage();
 
         if (_health <= 0)
             Die();
@@ -52,6 +56,7 @@ public class Enemy : MonoBehaviour, IHealth
 
     private void Die()
     {
+        _enemyAnimationsController.Die();
         gameObject.SetActive(false);
     }
 }
