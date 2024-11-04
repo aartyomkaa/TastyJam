@@ -57,6 +57,7 @@ namespace CodeBase.Knight
         private SkeletonAnimation _skeletonAnimation;
         private Spine.AnimationState _spineAnimationState;
         private Skeleton _skeleton;
+        private KnightSounds _sounds;
         private bool _isRunning;
 
 
@@ -66,16 +67,22 @@ namespace CodeBase.Knight
             _spineAnimationState = _skeletonAnimation.AnimationState;
             _skeleton = _skeletonAnimation.Skeleton;
             _isRunning = false;
+
+            _sounds = GetComponent<KnightSounds>();
         }
         public void Run()
         {
             _isRunning = true;
-            _spineAnimationState.SetAnimation(0, _runAnimationName, true);
+            TrackEntry trackEntry = _spineAnimationState.SetAnimation(0, _runAnimationName, true);
+
+            _sounds.StartStepSounds(trackEntry.AnimationEnd / 2);
         }
         public void Idle()
         {
             _isRunning = false;
             _spineAnimationState.SetAnimation(0, _idleAnimationName, true);
+
+            _sounds.StopStepSounds();
         }
         public void TakeDamage()
         {
@@ -84,25 +91,35 @@ namespace CodeBase.Knight
         public void Die()
         {
             _spineAnimationState.SetAnimation(0, _deathAnimationName, false);
+
+            _sounds.PlayDieClip();
         }
         public void Attack()
         {
+            _sounds.StopStepSounds();
             if (_skeleton.Skin.Name == _meleeSkinName)
             {
                 _spineAnimationState.SetAnimation(0, _meleeAtackAnimationName, false);
+
+                _sounds.PlayMeleeAttackClip();
             }
             else if (_skeleton.Skin.Name == _swordSkinName)
             {
                 _spineAnimationState.SetAnimation(0, _swordAttackAnimationName, false);
+
+                _sounds.PlaySwordAttackClip();
             }
             else if (_skeleton.Skin.Name == _poleaxeSkinName)
             {
                 _spineAnimationState.SetAnimation(0, _poleaxeAttackAnimationName, false);
+
+                _sounds.PlayPoleaxeAttackClip();
             }
 
             if (_isRunning)
             {
-                _spineAnimationState.AddAnimation(0, _runAnimationName, true, 0);
+                TrackEntry trackEntry = _spineAnimationState.AddAnimation(0, _runAnimationName, true, 0);
+                _sounds.StartStepSounds(trackEntry.AnimationEnd / 2);
             }
             else
             {
