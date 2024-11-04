@@ -81,10 +81,5 @@ namespace CodeBase.Player
         {
             _backpack.SwapItems();
         }
-
-        private void OnDisable()
-        {
-            _playerInputActions.Disable();
-        }
     }
 }
