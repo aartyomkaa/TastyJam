@@ -5,7 +5,10 @@ namespace CodeBase.Infrastructure.Services
     public interface IStaticDataService : IService
     {
         void LoadMonsters();
-        MonsterStaticData ForMonster(MonsterTypeID typeID);
+        void LoadLevels();
+        EnemyStaticData ForMonster(EnemyTypeID typeID);
         KnightStaticData ForKnight();
+
+        LevelStaticData ForLevel(string sceneKey);
     }
 }

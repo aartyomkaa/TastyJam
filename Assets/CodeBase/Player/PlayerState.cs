@@ -8,5 +8,6 @@ namespace CodeBase.Player
     public class PlayerState
     {
         [NonSerialized] public GameObject ObjectInHands;
+        [NonSerialized] public GameObject BackpackObject;
     }
 }

@@ -6,9 +6,11 @@ namespace CodeBase.Player
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private PlayerStaticData _movementStats;
+        private HeroAnimationsController _animationController;
         private Rigidbody2D _playerRb;
         private Camera _camera;
         private Vector2 _screenBounds;
+        private float _playerYOffset;
         private float _playerWidth;
         private float _playerHeight;
 
@@ -16,20 +18,33 @@ namespace CodeBase.Player
         private Vector2 _inputVector;
 
         // Player state
-        private HorizontalDirection _horizontalDirection;
         private Vector2 _frameVelocity;
+        private bool isRunning;
 
         private void Awake()
         {
+            _animationController = GetComponent<HeroAnimationsController>();
             _playerRb = GetComponent<Rigidbody2D>();
 
             _camera = Camera.main;
             _screenBounds = _camera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, _camera.transform.position.z));
 
-            Vector3 playerSize = GetComponent<SpriteRenderer>().bounds.size;
-            _playerWidth = playerSize.x / 2;
-            _playerHeight = playerSize.y / 2;
+            //Vector3 playerSize = GetComponent<SpriteRenderer>().bounds.size;
 
+            Collider2D collider2d = GetComponent<Collider2D>();
+            Vector2 playerSize = (Vector2)collider2d.bounds.size / 2;
+            _playerYOffset = collider2d.offset.y;
+
+            _playerWidth = playerSize.x;
+            _playerHeight = playerSize.y;
+
+
+        }
+
+        private void Start()
+        {
+            isRunning = false;
+            _animationController.Idle();
         }
 
         private void LateUpdate()
@@ -55,14 +70,6 @@ namespace CodeBase.Player
             {
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _inputVector.x * _movementStats.MaxSpeed, _movementStats.Acceleration * Time.fixedDeltaTime);
             }
-            if (_inputVector.x > 0 && _horizontalDirection != HorizontalDirection.Right)
-            {
-                _horizontalDirection = HorizontalDirection.Right;
-            }
-            else if (_inputVector.x < 0 && _horizontalDirection != HorizontalDirection.Left)
-            {
-                _horizontalDirection = HorizontalDirection.Left;
-            }
 
             // Vertical
             if (_inputVector.y == 0)
@@ -76,7 +83,27 @@ namespace CodeBase.Player
 
         }
 
-        private void ApplyMovement() => _playerRb.velocity = _frameVelocity;
+        private void ApplyMovement()
+        {
+            if (_frameVelocity == Vector2.zero)
+            {
+                if (isRunning)
+                {
+                    isRunning = false;
+                    _animationController.Idle();
+                }
+            }
+            else
+            {
+                if (!isRunning)
+                {
+                    isRunning = true;
+                    _animationController.Run();
+                }
+            }
+
+            _playerRb.velocity = _frameVelocity;
+        }
 
         private void StayInBounds()
         {
@@ -87,16 +114,10 @@ namespace CodeBase.Player
 
             Vector3 stayInBoundsPos = transform.position;
             stayInBoundsPos.x = Mathf.Clamp(stayInBoundsPos.x, minBounds.x + _playerWidth, maxBounds.x - _playerWidth);
-            stayInBoundsPos.y = Mathf.Clamp(stayInBoundsPos.y, minBounds.y + _playerHeight, maxBounds.y - _playerHeight);
+            stayInBoundsPos.y = Mathf.Clamp(stayInBoundsPos.y, minBounds.y + _playerHeight - _playerYOffset, maxBounds.y - _playerHeight - _playerYOffset);
             transform.position = stayInBoundsPos;
 
         }
 
-    }
-
-    public enum HorizontalDirection
-    {
-        Left,
-        Right
     }
 }

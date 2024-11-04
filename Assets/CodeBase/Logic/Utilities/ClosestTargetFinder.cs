@@ -6,7 +6,7 @@ namespace CodeBase.Logic.Utilities
     {
         private float _radius;
         private LayerMask _layerMask;
-        private RaycastHit2D[] _hitColliders;
+        private Collider2D[] _hitColliders;
 
         public ClosestTargetFinder(float radius, LayerMask layerMask)
         {
@@ -16,7 +16,7 @@ namespace CodeBase.Logic.Utilities
 
         public bool TryFindTarget(Vector2 currentPosition, out IHealth target)
         {
-            _hitColliders = Physics2D.CircleCastAll(currentPosition, _radius, Vector2.zero, _layerMask);
+            _hitColliders = Physics2D.OverlapCircleAll(currentPosition, _radius, _layerMask);
 
             if (_hitColliders.Length > 0)
             {

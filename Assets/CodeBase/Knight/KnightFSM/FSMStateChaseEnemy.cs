@@ -25,15 +25,12 @@ namespace CodeBase.Knight.KnightFSM
 
         public void Update()
         {
-            _movement.Move(_knightStateMachine.Target.Transform);
-            
-            if (_knightStateMachine.Target == null)
-                return;
-            
-            if (Vector2.Distance(_movement.transform.position, _knightStateMachine.Target.Transform.position) < _data.AttackRange)
+            if (Vector3.Distance(_movement.transform.position, _knightStateMachine.Target.Transform.position) <= _data.AttackRange)
             {
                 _knightStateMachine.SetState<FSMStateAttack>();
             }
+            
+            _movement.Move(_knightStateMachine.Target.Transform);
         }
 
         public void Exit()

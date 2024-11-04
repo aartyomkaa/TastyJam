@@ -26,19 +26,16 @@ namespace CodeBase.Knight.KnightFSM
 
         public void Update()
         {
-            if (_knightStateMachine.Target != null && _knightStateMachine.Target.Current > 0 &&
-                _knightStateMachine.Target.Transform.gameObject.activeSelf)
-            {
                 if (NeedChaseEnemy())
                 {
                     _knightStateMachine.SetState<FSMStateChaseEnemy>();
                 }
                 else
                 {
-                    _attacker.Attack(_knightStateMachine.Target, _data.Damage);
+                    _attacker.Attack();
                 }
-            }
-            else
+            
+            if (_knightStateMachine.Target.Transform.gameObject.activeSelf == false)
             {
                 _knightStateMachine.SetState<FSMStateIdle>();
             }
@@ -50,8 +47,8 @@ namespace CodeBase.Knight.KnightFSM
         
         private bool NeedChaseEnemy()
         {
-            _distance = Vector2.Distance(_attacker.gameObject.transform.position, _knightStateMachine.Target.Transform.position);
-
+            _distance = Vector3.Distance(_attacker.gameObject.transform.position, _knightStateMachine.Target.Transform.position);
+            
             if (_distance > _data.AttackRange)
                 return true;
 

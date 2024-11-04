@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace CodeBase.Knight
@@ -7,37 +8,23 @@ namespace CodeBase.Knight
     {
         private float _moveSpeed;
         private Coroutine _moveCoroutine;
-
-        private bool _isMoving = false;
+        private Rigidbody2D _rb;
+        private SpriteRenderer _spriteRenderer;
 
         public void Construct(float moveSpeed) => 
             _moveSpeed = moveSpeed;
 
-        public void Move(Transform target)
+        private void Awake()
         {
-            if (_isMoving)
-                return;
-
-            if (_moveCoroutine != null)
-            {
-                StopCoroutine(_moveCoroutine);
-            }
-            
-            _moveCoroutine = StartCoroutine(Moving(target));
+            _rb = GetComponent<Rigidbody2D>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        private IEnumerator Moving(Transform target)
+        public void Move(Transform target)
         {
-            _isMoving = true;
-            
-            while (Vector3.Distance(transform.position, target.position) > 1f)
-            {
-                transform.position = Vector3.Lerp(transform.position, target.position, _moveSpeed * Time.deltaTime);
-                
-                yield return null;
-            }
-
-            _isMoving = false;
+            Vector3 vectorToKnight = target.transform.position - transform.position;
+        
+            transform.Translate(vectorToKnight * (_moveSpeed * Time.deltaTime));
         }
     }
 }

@@ -1,29 +1,42 @@
-using System.Collections;
+using CodeBase.EnemiesScripts.Controller;
+using CodeBase.Logic.Utilities;
 using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
-    public delegate void Empty();
-    public event Empty StartAttacking;
-
     private Rigidbody2D _rb;
-    private SpriteRenderer _spriteRenderer;
+    private float _moveSpeed;
+    private HorizontalDirection _horizontalDirection;
+    private EnemyAnimationsController _enemyAnimationsController;
 
-    public IEnumerator MovingToKnight(float enemySpeed, float enemyVisibilityRange)
+    public void Construct(float moveSpeed) => 
+        _moveSpeed = moveSpeed;
+
+    private void Awake()
     {
         _rb = gameObject.GetComponent<Rigidbody2D>();
-        _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        Vector2 _knightPos = (Vector2)GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-        Vector2 _vectorToKnight = _knightPos - (Vector2)transform.position;
-        while (_vectorToKnight.magnitude > enemyVisibilityRange)
-        {
-            _rb.velocity = _vectorToKnight.normalized * enemySpeed;
-            _knightPos = (Vector2)GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-            _vectorToKnight = _knightPos - (Vector2)transform.position;
-            _spriteRenderer.flipX = _rb.velocity.x < 0;
+        _enemyAnimationsController = gameObject.GetComponent<EnemyAnimationsController>();
 
-            yield return new WaitForSeconds(Time.deltaTime);
+        _horizontalDirection = HorizontalDirection.Right;
+    }
+
+    public void Move(Transform target)
+    {
+        Vector3 vectorToKnight = target.transform.position - transform.position;
+        
+        transform.Translate(vectorToKnight * Time.deltaTime);
+
+        if (vectorToKnight.x > 0 && _horizontalDirection != HorizontalDirection.Right)
+        {
+            _horizontalDirection = HorizontalDirection.Right;
+            _enemyAnimationsController.Turn();
         }
-        StartAttacking.Invoke();
+        else if (vectorToKnight.x < 0 && _horizontalDirection != HorizontalDirection.Left)
+        {
+            _horizontalDirection = HorizontalDirection.Left;
+            _enemyAnimationsController.Turn();
+        }
+
+
     }
 }
