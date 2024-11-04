@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: EnemyBase
   m_EditorClassIdentifier: 
   Type: 0
-  AttackRange: 7
-  AttackCooldown: 2
-  MaxHp: 10
-  Damage: 1
-  DamageRange: 7
-  Speed: 0.7
+  AttackRange: 9
+  AttackCooldown: 3
+  MaxHp: 25
+  Damage: 3
+  DamageRange: 9
+  Speed: 0.3
   Prefab: {fileID: 6123560694690102695, guid: db9906c3d569b6744ae2ff23fd5b35c4, type: 3}
   KnightLayer:
     serializedVersion: 2

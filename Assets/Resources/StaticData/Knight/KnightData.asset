@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: KnightData
   m_EditorClassIdentifier: 
   Hp: 100
-  Damage: 20
-  MoveSpeed: 2
-  AggroRange: 50
+  Damage: 5
+  MoveSpeed: 0.4
+  AggroRange: 90
   AttackRange: 10
   PickUpRange: 5
   Enemy:
