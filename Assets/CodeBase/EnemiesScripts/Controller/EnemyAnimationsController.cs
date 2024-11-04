@@ -52,9 +52,10 @@ namespace CodeBase.EnemiesScripts.Controller
             _spineAnimationState.SetAnimation(1, _takeDamamgeAnimationName, false);
             _sounds.PlayTakeDamageClip();
         }
-        public void Die()
+        public float Die()
         {
-            _spineAnimationState.SetAnimation(0, _deathAnimationName, false);
+            TrackEntry trackEntry = _spineAnimationState.SetAnimation(0, _deathAnimationName, false);
+            return trackEntry.AnimationEnd;
         }
         public void Attack()
         {

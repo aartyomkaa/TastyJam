@@ -60,10 +60,10 @@ CircleCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4294967295
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -73,9 +73,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 5.563487}
+  m_Offset: {x: 0, y: 2.76}
   serializedVersion: 2
-  m_Radius: 8.348693
+  m_Radius: 4
 --- !u!50 &8890938104976360681
 Rigidbody2D:
   serializedVersion: 4
@@ -202,7 +202,7 @@ AudioSource:
   m_GameObject: {fileID: 6123560694690102695}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8541274443625135890, guid: fef6613c97ead8a4994ed0e813f84217, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1

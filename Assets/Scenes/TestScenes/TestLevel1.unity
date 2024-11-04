@@ -93167,6 +93167,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Music
       objectReference: {fileID: 0}
+    - target: {fileID: 8153918162488022012, guid: 55fe94ed12c613c4eae7415cb93cc3dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8570019621614285282, guid: 55fe94ed12c613c4eae7415cb93cc3dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   Type: 0
   AttackRange: 7
   AttackCooldown: 2
-  MaxHp: 40
+  MaxHp: 10
   Damage: 1
   DamageRange: 7
   Speed: 0.7

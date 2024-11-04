@@ -56,7 +56,7 @@ namespace CodeBase.Knight
         public void TakeDamage(float damage)
         {
             Current -= damage;
-            _animator.TakeDamage();
+            //_animator.TakeDamage();
 
             if (Current <= 0)
                 Die();

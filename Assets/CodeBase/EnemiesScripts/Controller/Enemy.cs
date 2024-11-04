@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using CodeBase.EnemiesScripts.Controller;
 using CodeBase.Logic;
 using CodeBase.StaticData;
@@ -60,8 +61,13 @@ public class Enemy : MonoBehaviour, IHealth
 
     private void Die()
     {
-        _enemyAnimationsController.Die();
+        StartCoroutine(WaitForDie(_enemyAnimationsController.Die()));
         HasDied?.Invoke(this);
+    }
+
+    private IEnumerator WaitForDie(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
         gameObject.SetActive(false);
     }
 }
