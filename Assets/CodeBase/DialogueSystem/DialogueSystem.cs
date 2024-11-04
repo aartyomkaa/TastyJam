@@ -22,6 +22,8 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private Image _dialogueIcon;
 
     [SerializeField] private Image _flashbackImage;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audioClip;
 
     [SerializeField] private SceneLoader _sceneLoader;
 
@@ -66,6 +68,7 @@ public class DialogueSystem : MonoBehaviour
             for (int j = 0; j < _texts[i].Length; j++)
             {
                 _dialogueText.text = _dialogueText.text + _texts[i][j];
+                //_audioSource.PlayOneShot(_audioClip);
                 yield return new WaitForSeconds(_symbolsToDelay.Contains(_texts[i][j]) ? _typingDelay * 10 : _typingDelay);
             }
             while (!Input.GetMouseButtonDown(0))
